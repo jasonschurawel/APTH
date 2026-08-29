@@ -17,16 +17,19 @@ jobs:
       - name: Install LaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive-luatex texlive-latex-extra texlive-bibtex-extra texlive-fonts-recommended texlive-fonts-extra texlive-lang-german
+          sudo apt-get install -y texlive-luatex texlive-latex-extra texlive-bibtex-extra texlive-fonts-recommended texlive-fonts-extra texlive-lang-german texlive-lang-latin
 
-      - name: Build PDF
+      - name: Build PDFs
         run: make
 
-      - name: Upload artifact
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: APTH-PDF
-          path: apth_declaration_de.pdf
+          name: APTH-PDFs
+          path: |
+            apth_declaration_de.pdf
+            apth_declaration_en.pdf
+            apth_declaration_la.pdf
 
       - name: Delete previous release
         run: gh release delete v1-2026-08-29 --yes --cleanup-tag || true
@@ -34,6 +37,12 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create release
-        run: gh release create v1-2026-08-29 "apth_declaration_de.pdf#APTH-Ausgabe-1-2026-08-29.pdf" --title "APTH – Ausgabe 1 (2026-08-29)" --notes "Erste Ausgabe des APTH, gebaut per GitHub Actions."
+        run: |
+          gh release create v1-2026-08-29 \
+            "apth_declaration_de.pdf#APTH-declaration-de-v1-2026-08-29.pdf" \
+            "apth_declaration_en.pdf#APTH-declaration-en-v1-2026-08-29.pdf" \
+            "apth_declaration_la.pdf#APTH-declaration-la-v1-2026-08-29.pdf" \
+            --title "v1-2026-08-29" \
+            --notes "First release of the APTH declaration, built automatically via GitHub Actions. Includes German (de), English (en), and Latin (la) versions."
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

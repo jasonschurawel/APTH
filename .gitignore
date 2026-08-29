@@ -1,0 +1,19 @@
+# LaTeX Build-Artefakte
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+
+# Generierte PDF (wird von GitHub Actions gebaut)
+erklärung.pdf
+
+# Betriebssystem
+.DS_Store
+Thumbs.db

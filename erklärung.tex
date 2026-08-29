@@ -1,0 +1,256 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[ngerman]{babel}
+\usepackage{libertinus}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm, headheight=14pt}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref} 
+\usepackage{fancyhdr}
+\usepackage[round,authoryear]{natbib}
+\usepackage{xspace}
+\usepackage{textcomp}
+
+\providecommand{\harvardand}{und}
+\renewcommand{\refname}{Literaturverzeichnis}
+
+% Custom Command für Kapitälchen (verhindert Warnungen bei fette Kapitälchen)
+\newcommand{\scbold}[1]{{\normalfont\scshape #1}}
+
+% Logo-Befehl für die Approbatio Testimonii Historica (\apth)
+% Chorus hat nur einen einzigen Schnitt; daher werden alle Serien/Schnitte auf
+% denselben Schnitt gemappt (UprightFont=* usw.), um Font-Warnungen zu vermeiden.
+% Scale=MatchLowercase sorgt dafür, dass die Schriftgröße perfekt zur Libertinus passt.
+\newfontfamily\apthfont{TeX Gyre Chorus}[
+  Scale=MatchLowercase,
+  UprightFont=*,
+  ItalicFont=*,
+  BoldFont=*,
+  BoldItalicFont=*,
+  SlantedFont=*,
+  BoldSlantedFont=*]
+\newcommand{\apth}{{\apthfont APTH}\hspace{0.15em}\xspace}
+
+% Hilfsbefehl für vollständig eingerückte Gesetzbuch-Absätze (1), (2)...
+\newcommand{\subpar}[1]{%
+  \begingroup
+  \leftskip=2em % Gesamte Einrückung von links
+  \noindent#1\par
+  \endgroup
+}
+
+% Manuell nummerierte Abschnitte mit dynamischen Querverweisen:
+% \apthsec{<Nummer>}{<Titel>}{<Label>} setzt die fette Abschnittsüberschrift
+% und legt einen Anker an, sodass Querverweise über \ref{sec:<Label>}
+% automatisch mitwandern, wenn Abschnitte umnummeriert werden.
+\makeatletter
+\newcommand{\apthsec}[3]{%
+  \phantomsection%
+  \def\@currentlabel{#1}%
+  \label{sec:#3}%
+  \textbf{§ #1 [#2]}%
+}
+\makeatother
+
+% Layout & Kopf-/Fußzeilen
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\scshape Manifest der Approbatio Testimonii Historica}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Kopfzeile auf der ersten Seite ausblenden
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% Überschriften-Formate
+\titleformat{\section}{\large\bfseries\centering}{}{0pt}{}[\vspace{0.1cm}\hrule]
+\titleformat{\subsection}{\bfseries}{}{0pt}{}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.8em}
+
+% Orphan- und Witwenzeilen vermeiden
+\clubpenalty=10000
+\widowpenalty=10000
+\brokenpenalty=10000
+
+\begin{document}
+
+% Einzige klare Titel- & Untertitel-Struktur auf Seite 1
+\begin{center}
+    \thispagestyle{plain} % Unterdrückt Kopfzeile auf Seite 1
+    {\huge\bfseries Erklärung zur historischen Redlichkeit und Hermeneutik der biblischen Schriften\par}
+    \vspace{0.4cm}
+    {\Large\itshape Manifest der Approbatio Testimonii Historica (\apth)\par}
+    \vspace{0.3cm}
+    {\rule{0.5\textwidth}{0.4pt}\par}
+    \vspace{0.2cm}
+    {\large\scshape Kaiserslautern, erste Fassung vom \today \par}
+\end{center}
+
+\vspace{0.4cm}
+
+\section*{Präambel}
+
+Die Frage nach der Verlässlichkeit biblischer Schriften hat die gesamte Christenheit abseits der rein institutionell-autoritären Traditionen in ein trilemmatisches Labyrinth geführt. Drei dominante Strömungen prägen das heutige Denken – die Lehre von der absoluten Irrtumslosigkeit (Inerrancy), die liberale Theologie und der Antiintellektualismus –, und alle drei erweisen sich bei genauer erkenntnistheoretischer Betrachtung als fundamentale Irrtümer.
+
+Auf der einen Seite steht die Lehre von der absoluten Irrtumslosigkeit (\textit{Inerrancy}), wie sie exemplarisch in der Chicago-Erklärung formuliert wurde \citep{icbi1978}. Dieses Axiom einer absoluten, widerspruchsfreien Fehlerlosigkeit stammt historisch aus dem nordamerikanischen Protestantismus des 19. Jahrhunderts \citep{rogersmckim1979}; heute wird es bis zur Absurdität auf die Spitze getrieben. Ein absolutistischer Anspruch an das Sprachformat lässt sich weder aus der Schrift selbst noch aus der Logik herleiten. Wo er dennoch festgehalten wird, erzwingt er absurde Folgebehauptungen, denen jeder mit gesundem Menschenverstand absagen würde – etwa, dass Fledermäuse Vögel seien (Lev 11,19), dass Insekten vier Beine hätten (Lev 11,20–23) oder dass die Erde von einer festen Himmelskuppel mit Wassermassen darüber überwölbt sei (Gen 1,6–8) \citep{wells2013} – und hat die Christenheit im Fundamentalismusstreit tief gespalten \citep{marsden2006}. Zugleich bindet er den Glauben an die fehlerfreie Detailperfektion des Textes: Mit dem ersten anerkannten Widerspruch fällt für viele der ganze Glaube \citep{ehrman2009}. Eine Sonderrolle nimmt hierbei die klassisch historisch-grammatische Auslegung ein: Sie beansprucht zwar, den Text mit den Mitteln der Sprach- und Geschichtswissenschaft zu analysieren, will aber nicht wahrhaben, was aus ihrem eigenen Axiom folgt. Eine ehrliche Grammatik- und Kontextanalyse stößt unweigerlich auf inkompatible Weltbilder, logische Irrtümer und Widersprüche – Befunde, die das Postulat absoluter Fehlerlosigkeit nicht bestehen lässt. Wer an dieser Prämisse eisern festhält, muss die Ergebnisse seiner eigenen Methode im Ernstfall verwerfen und landet in der krampfhaften Harmonisierung, die er mit historischer Redlichkeit verwechselt. Auf der anderen Seite steht die liberale Theologie mit ihrem methodischen Atheismus. Sie setzt das unbegründete Dogma eines geschlossenen Kausalzusammenhangs \citep{troeltsch1913,schlatter1905}, entwertet jede Überlieferung göttlichen Handelns von vornherein als Mythos \citep{bultmann1941} und raubt der Offenbarung ihren Realkern. Schließlich verfällt der Antiintellektualismus dem Trugschluss, eine Auslegung sei gar nicht nötig („es steht hier doch ganz klar“), womit er die eigene, unreflektierte Subjektivität zum Maßstab der Wahrheit erhebt \citep{noll1994}.
+
+\section*{I. Warum die etablierten Wege scheitern}
+
+Allen drei Fehlwegen liegt ein gemeinsamer hermeneutischer Kategorienfehler zugrunde: Sie verfehlen die eigentliche Sprachhandlung und Intentionalität des Textes, weil sie das antike Sprachformat missverstehen, vermengen oder entwerten. Jeder auf seine Weise ignoriert, was der antike Zeuge durch sein Schreiben tatsächlich tun und bewirken wollte:
+
+\subpar{(1) \textbf{Der Fundamentalismus} verabsolutiert die äußere Gestalt des Textes. Er setzt voraus, dass ein göttlich inspirierter Text in all seinen sprachlichen und weltanschaulichen Details einen fehlerfreien Wahrheitsanspruch erfüllen muss. Wenn dann inkompatible Weltbilder, logische Irrtümer oder Widersprüche auftauchen, führt das entweder zu krampfhafter Harmonisierung oder zur kognitiven Erpressbarkeit des Glaubens \citep{barr1977}.}
+
+\subpar{(2) \textbf{Die liberale Theologie} begegnet diesem Absolutheitsanspruch mit einer spiegelbildlichen Verwechslung. Weil sie die antike Textgestalt (mit ihren Weltbildern und Formaten) nicht von der darin bezeugten Realität trennen kann oder will, verwirft sie – im Banne eines geschlossenen Kausalzusammenhangs – das Ganze als Mythos. Sie opfert den Realkern des Geschehens, weil sie das antike Sprachformat nicht ernst nehmen kann, ohne es wörtlich zu nehmen \citep{schlatter1905,machen1923}.}
+
+\subpar{(3) \textbf{Der Antiintellektualismus} schließlich kappt den historischen Bezug gänzlich. Indem er postuliert, die Schrift erkläre sich völlig unvermittelt von selbst, erhebt er die eigene, unreflektierte Gegenwartserfahrung zum Maßstab und ersetzt die historische Intention des Autors durch ein subjektives Erbauungsgefühl \citep{noll1994}.}
+
+Alle drei Strömungen stolpern darüber, dass sie den Text auf das reduzieren, was er rein äußerlich darstellt, statt danach zu fragen, worauf er verweist.
+
+Jenseits der drei genannten Hauptströmungen existieren weitere wirkmächtige Ansätze – wie Karl Barths Dialektische Theologie, die Existentiale Interpretation Bultmanns oder die moderne Kanonisch-Narrative Hermeneutik \citep{barth1922,bultmann1941,childs1979,frei1974} –, die den Realkern der Geschichte primär als existenzielle Anrede, Mythos oder reine Erzählwelt auffassen. Obwohl sie die Sackgassen der Inerrancy vermeiden wollen, geraten sie im Gegensatz zu den drei pragmatischen Fehlwegen in einen fundamentalen epistemologischen Zirkelschluss: Sie postulieren die Wahrheit der Schrift aus ihrem eigenen Binnensystem heraus – sei es durch ein unverfügbares Geist-Ereignis im Hörer, die Selbstevidenz des Glaubensaktes oder die in sich geschlossene Erzähllogik des Kanons. Indem diese Ansätze die Sinnhaftigkeit des Zeugnisses von dessen historischer Überprüfbarkeit entkoppeln, setzen sie das zu Folgernde bereits im Ausgangspunkt axiomatisch voraus. Solch ein Zirkelschluss ist epistemologisch wertlos, weil er ein geschlossenes System schafft, das sich selbst immunisiert, keinerlei echte Erkenntnis gewinnt und jede rationale Rechenschaftspflicht verweigert \citep{popper1963}. Genau diese Zirkularität haben bereits Pannenberg \citeyearpar{pannenberg1961,pannenberg1973} gegenüber der Selbstevidenz der Offenbarung sowie Barr \citeyearpar{barr1983} und Tracy \citeyearpar{tracy1981} gegenüber der kanonischen Erzähllogik herausgearbeitet.
+
+Wenn weder das krampfhafte Glätten des Sprachformats, noch das materialistische Zerschneiden, noch die naive Verweigerung der Textarbeit einen tragfähigen Weg weisen – was bleibt dann?
+
+Einen möglichen Ausweg aus diesem fundamentalen Scheitern der etablierten Wege bietet der hier entwickelte Ansatz, den wir im Folgenden als \textit{Approbatio Testimonii Historica} (\apth) bezeichnen. 
+
+\section*{II. Grundlagen der \textit{Approbatio Testimonii Historica}}
+
+\apthsec{1}{Methodischer Kerngedanke}{kerngedanke} Die \apth verbindet das erkenntnistheoretische Fundament des Kritischen Realismus, eine klare axiomatische Herleitung und das etablierte Instrumentarium der historischen Geschichtswissenschaft. Wir begegnen dem biblischen Zeugnis im Rahmen der \apth auf Augenhöhe mit der wissenschaftlichen Vernunft und in vollkommener Redlichkeit.
+
+\apthsec{2}{Unterscheidung von Faktum und Format}{faktum-format} 
+Die \apth unterscheidet strikt zwischen der ontologischen Faktizität des Handelns Gottes in Raum und Zeit und dem literarischen Format der antiken Überlieferung. Diese Unterscheidung ist keine hermeneutische Sonderregel, sondern eine semiotische Grundtatsache: Kein Text der Menschheitsgeschichte ist identisch mit der Realität, auf die er verweist; Sprache ist stets deren zeichenhafte Repräsentation. Sprache ist niemals das Ereignis selbst, sondern – metaphorisch gesprochen – die Landkarte für die Landschaft: Wer Format und Faktum verwechselt, versucht auf der Karte zu wandern; wer die Landkarte verwirft, weil sie nur aus Papier besteht, verliert den Orientierungssinn.  In dieser Methodik greift die \apth die Tradition der klassischen \textit{Zwei-Bücher-Lehre} auf: Gott offenbart sich sowohl im „Buch der Natur“ (der empirischen Wirklichkeit, die der Vernunft und Wissenschaft zugänglich ist) als auch im „Buch der Schrift“ (der zeichenhaften Bezeugung des Glaubens). Format und Faktum stehen somit nicht im Widerspruch, sondern in einem komplementären Verweisungsverhältnis.
+
+\apthsec{3}{Axiom I: Existenz Gottes}{axiom-i} 
+\textit{Die Welt ist das geordnete Produkt einer transzendenten, personalen Ursache.}
+Raum, Zeit und Materie sind geschaffene Wirklichkeit. Ihre Ordnung und Beschreibbarkeit verweisen auf eine transzendente, personale Ursache: Gott, die personale Quelle von Raum, Zeit und Materie.
+
+\apthsec{4}{Axiom II: Geschichtliche Wirkspuren Transzendenz}{axiom-ii} 
+\textit{Göttliches Handeln in der Wirklichkeit hinterlässt historisch greifbare Wirkungen.}
+Ein personaler Schöpfergott verharrt nicht in Distanz zur Schöpfung. Sein Handeln in Raum und Zeit hinterlässt empirisch beobachtbare Spuren und Wirkungen in der menschlichen Geschichte, die der historischen Analyse zugänglich sind.
+
+\apthsec{5}{Epistemologische Funktion der Axiome I \& II}{axiom-funktion} 
+\textit{Axiome definieren den wissenschaftlichen Möglichkeitsraum ohne Zirkelschluss.}
+Sie stellen keinen Zirkelschluss (vgl. Kapitel I) dar, weil sie kein Auslegungsergebnis vorschreiben. Sie machen göttliches Handeln im Raum der historischen Hypothesen erst denkbar.
+
+\apthsec{6}{Axiom III: Der biblische Kanon als spezifischer Wirkungsraum}{kanon} 
+\textit{Der historische Raum transzendenter Wirkspuren wird axiomatisch im biblischen Kanon verortet.}
+Als drittes Axiom setzen wir fest, dass die geschichtlichen Wirkspuren göttlichen Handelns (Axiom II) ihren spezifischen, historisch bezeugten Referenzrahmen im Textkorpus des Alten und Neuen Testaments finden. Um den Forschungsgegenstand eindeutig abzugrenzen und die Exegese vor einem unendlichen Regress zu bewahren, definieren wir die Gesamtheit dieses Suchraums über den geschlossenen protestantischen Kanon der 66 Bücher: das Alte Testament – fachsprachlich der hebräische Kanon (Tanach) mit seinen drei Teilen Tora (Weisung), Nebi'im (Propheten) und Ketubim (Schriften) in evangelischer Zählung von 39 Büchern – sowie das Neue Testament in der altkirchlich fixierten Sammlung von 27 Schriften \citep{beckwith1985,metzger1987}.
+
+\apthsec{7}{Heuristische Plausibilisierung der Kanongrenzen}{kanon-heuristik} 
+Die axiomatische Kanonwahl reflektiert die historisch-wirkungsgeschichtliche Verdichtung der primären Zeugnisse. Die Begrenzung des Suchraums (§~\ref{sec:kanon}) ist eine methodische Heuristik: Sie knüpft an die historische Tatsache an, dass die antiken Gemeinschaften in genau diesen 66 Schriften eine verdichtete Überlieferung von Transzendenzwirkungen erkannt haben. Die altkirchlichen Auswahlprozesse (wie der Bezug auf Augenzeugen, die inhaltliche Kohärenz und die breite Rezeption) dienen der \apth nicht als unfehlbare Dogmen, sondern als historischer Indikator dafür, dass dieser Textkorpus die primäre Quellenbasis für Göttliches Handeln in der Wirklichkeit darstellt. Die Wahl gerade dieses Kanons ist eine pragmatische Setzung, keine dogmatische Grenze. Sie darf ausdrücklich nicht mit dem reformierten Christentum oder einem sonstigen konfessionellen Bekenntnis verwechselt werden: Der Suchraum hätte im Prinzip auch anders abgegrenzt werden können. Aber jede Forschung braucht irgendwo eine Grenze, um überhaupt einen klar umrissenen Gegenstand zu besitzen. Für die besondere, 66 Bücher umfassende Grenze des protestantischen Kanons sprechen zwei Gesichtspunkte: Erstens bezeichnet sie die historisch konservativste, von der überwiegenden Christenheit geteilte Schnittmenge; die zusätzlichen deuterokanonischen Schriften des katholischen oder orthodoxen Kanons erweitern den Suchraum, ohne ihn historisch zwingend zu machen. Zweitens lässt sich dieser Kanon aus der Wirkungsgeschichte als ein Minimum betrachten: In genau diesen Texten hat die antike Kirche die verdichtete Überlieferung des göttlichen Handelns erkannt und festgehalten.
+
+\apthsec{8}{Außerkanonische Literatur}{ausserkanonisch} Daraus folgt der Umgang mit aller übrigen Literatur – den Apokryphen, Pseudepigraphen, den Qumran-Schriften, der rabbinischen Überlieferung und der griechisch-römischen Umweltliteratur: Sie sind als historischer Kontext und als Vergleichsmaterial außerordentlich wertvoll und werden von der \apth auch so herangezogen, aber sie liegen außerhalb des axiomatischen Suchraums. Für sie gelten die Axiome der §§~\ref{sec:axiom-i}–\ref{sec:kanon} nicht als Wirkungsraumthese; sie sind Kontext des Kanons, nicht dessen Untersuchungsgegenstand. Ihr Wahrheitsanspruch wird dadurch weder behauptet noch bestritten. Dasselbe gilt für spätere Offenbarungsansprüche, etwa den Koran: Er könnte mit denselben Instrumenten untersucht werden. Wegen des vorausgesetzten Glaubens (der \textit{fiducia}) des Verfassers besitzt er für die \apth jedoch keine Relevanz als Quelle transzendenter Wirkspuren. Entscheidend ist das abduktive Gegenüberstellen: Wo verschiedene transzendente Erklärungen gegeneinander abgewogen werden müssen, gerät der Forschende gerade deshalb nicht in einen weltanschaulichen Konflikt, weil der Suchraum der \apth ausdrücklich nur den Kanon umfasst. Innerhalb dieses Suchraums bietet die \apth sodann die monotheistisch adjungierte historische Methodik – keine Sonderregelung, sondern die konsequente Anwendung des allgemeinen Instrumentariums.
+
+\apthsec{9}{Axiom IV: Textnatur und menschliche Verfasserschaft}{textnatur}
+\textit{Die biblischen Schriften liegen als antike Quelltexte vor, verfasst von realen, historischen Menschen.}
+Der Kanon (§~\ref{sec:kanon}) liegt der \apth als Sammlung antiker Quelltexte vor, die von realen, historischen Menschen in ihren je eigenen Sprachen, Gattungen und Situationen verfasst wurden. Die \apth grenzt sich damit definitorisch von jeder Inspirationslehre im Sinne eines Diktats ab: Die Bibel ist nicht der Koran – sie wird weder als vom Himmel diktierte Magie-Formel noch als mechanisch eingegebenes Wort verstanden. Nüchtern gilt: Was wir zunächst wissen, ist, dass diese Texte von sehr verschiedenen Dingen zeugen – von Ereignissen, Deutungen, Gebeten, Weisungen und Zeugnissen –, auch dort, wo ihre Gattung gerade keine Geschichtserzählung ist. Was wir dagegen von vornherein nicht wissen, ist, dass diese Schriften per se durch eine vom Heiligen Geist gegebene Weisheit entstanden sind; eine solche Annahme wäre ohne Zirkelschluss nicht zu setzen. Selbstverständlich kann man durch spätere Überlegungen – etwa die Inferenz auf die beste Erklärung – zu solchen Hypothesen gelangen; sie sind dann Ergebnis der Forschung, nicht deren Voraussetzung. Die prinzipielle Existenz dieser menschlichen Autorenabsicht macht ein erforschen der Texte überhaupt erst möglich.
+
+\section*{III. Methodischer Aufbau der \textit{Approbatio Testimonii Historica}}
+
+\apthsec{10}{Sprechakttheorie und Feststellung der Autorenabsicht}{sprechakttheorie} Die \apth verwendet den Begriff der Illokution aus der Sprechakttheorie der Sprachphilosophie: John L. Austin \citeyearpar{austin1962} unterschied den \textit{lokutionären Akt} (etwas mit Sinn und Referenz sagen), den \textit{illokutionären Akt} (was man tut, indem man es sagt: behaupten, bezeugen, anweisen) und den \textit{perlokutionären Akt} (die erzielte Wirkung); systematisiert wurde diese Theorie von John R. Searle \citeyearpar{searle1969}, die zugrunde liegende Analyse der Sprecherintention stammt von H. Paul Grice \citeyearpar{grice1957}. Präzisiert heißt das für die \apth: Format und Faktum (§~\ref{sec:faktum-format}) sind eine Binnenunterscheidung innerhalb des lokutionären Aktes, nämlich zwischen der Sinn-Gestalt der Rede und der Realität, auf die sie verweist; die Illokution ist eine davon unabhängige, eigene Dimension – die Frage, was der Verfasser mit seinen Worten an seinen Adressaten tat. Die Perlokution wird als Wirkungsgeschichte von der Illokution getrennt. Damit wird keine theologische Sonderterminologie begründet: Die Rekonstruktion der illokutionären Absicht ist ein etabliertes Verfahren der Geschichtswissenschaft, das Quentin Skinner \citeyearpar{skinner1969} in die historische Ideengeschichte eingeführt hat. Die \apth übernimmt das Konzept als Teil des allgemeinen historischen Repertoires und erteilt jenen Überdehnungen eine Absage, die ein philosophisches Konzept zur exklusiven exegetischen Methode erklärten – am bekanntesten Rudolf Bultmanns \citeyearpar{bultmann1941} existentiale Interpretation, die Heideggers Existenzial-Analytik zum privilegierten hermeneutischen Schlüssel überhöhte, sowie die neue Hermeneutik von Ernst Fuchs \citeyearpar{fuchs1959} und Gerhard Ebeling \citeyearpar{ebeling1967}, die Heideggers Sprachphilosophie als „Sprachgeschehen“ verabsolutierte. Auf dieser Grundlage gilt für die Feststellung der Autorenabsicht: Die Unterscheidung zwischen dem antiken Sprachformat und der beabsichtigten Sprachhandlung (Illokution) darf nicht umgekehrt zum Rettungsgriff verkommen. Auch ein zeitbedingtes oder aus heutiger Sicht fehlerhaftes Weltbild kann selbst der Gegenstand der beabsichtigten Sprachhandlung sein. Die \apth verpflichtet zur historisch redlichen Feststellung der Autorenabsicht – auch dort, wo die Illokution Aussagen enthält, die unserer heutigen Erkenntnis oder Weltsicht widersprechen. Wo der Autor eine antike Vorstellung nicht bloß als Träger seiner Aussage verwendet, sondern sie selbst lehrt oder voraussetzen will, ist genau dies der Befund, der stehenbleibt.
+
+\apthsec{11}{Inferenz auf die beste Erklärung}{inferenz} Um die in Axiom II (§~\ref{sec:axiom-ii}) vorausgesetzten transzendenten Wirkspuren beurteilen zu können, ohne in die Willkür einer selektiven Auslegung zu verfallen, benötigt die \apth ein klares methodisches Kriterium für die Beurteilung transzendent gemeinter Zeugnisse. Wir wenden hier das Kriterium der \textit{Inferenz auf die beste Erklärung} \citep{harman1965,lipton2004,wright1992} an: Eine transzendente Einwirkung Gottes wird im Rahmen der \apth dann als historisch beste Hypothese erwogen, wenn sie eine real greifbare, historische Wirkung erklärt, die ohne dieses Ereignis rätselhaft, inkonsequent oder historisch unwahrscheinlich bliebe. Wir fragen also nicht nur, was der Text behauptet, sondern welche reale Ursache die beobachtbaren Wirkungen in der Geschichte (wie die Entstehung der Urgemeinde, radikale Verhaltensänderungen der Zeugen oder die Überlieferungsstruktur) am kohärentesten erklärt. Damit wird das Zugestehen göttlichen Handelns nicht zu einem blinden Glaubenssprung, sondern zu einer rational verantworteten Schlussfolgerung auf der Basis historischer Erklärungskraft. Die \apth konstruiert dabei ausdrücklich keinen Lückenbüßergott: Göttliches Handeln wird nicht als Verlegenheitserklärung für die Lücken unseres Wissens bemüht. Maßgeblich ist nicht das bloße Scheitern immanenter Erklärungen, sondern positive Erklärungskraft – eine real greifbare, historische Wirkung, die durch die angenommene transzendente Ursache verständlich wird. Wo kein solcher positiver Befund vorliegt, erhebt die \apth keine transzendente Hypothese; oft ist dann ein ehrliches „Wir wissen es nicht“ – ein \textit{Non liquet} – die beste Erklärung. Die Inferenz ruht auf den Daten, nicht auf dem Unvermögen der Vernunft \citep{bonhoeffer1951,coulson1955,plantinga2011}.
+
+\apthsec{12}{Vollumfängliche Methodenanwendung}{methodenanwendung} Wir wenden das etablierte Instrumentarium der Historisch-kritischen Forschung ohne Abstriche an: die Textkritik (Wiederherstellung des ursprünglichen Wortlauts), die Literarkritik (Scheidung der Quellen und Bearbeitungsschichten), die Formgeschichte (Analyse der Kleingattungen und ihres „Sitzes im Leben“), die Traditions- und Redaktionsgeschichte (Wachstum der Überlieferung und ihre Endgestalt durch den Redaktor) sowie die historische Semantik und den religionsgeschichtlichen Vergleich \citep{steck1999,schnelle2008,soeding1998}. Dasselbe gilt für das Instrumentarium, das die klassische Altertumswissenschaft für die Arbeit an antiken Texten entwickelt hat – Quellenkritik und Textkonstitution, Epigraphik, Papyrologie, Numismatik und die historische Kontextualisierung; die biblischen Schriften sind antike Texte und werden mit genau diesem Handwerkszeug behandelt \citep{schaps2011,bernheim1889}. Der Text wird in seiner jeweiligen antiken Sprache, seiner literarischen Gattung und seinem historischen Kontext analysiert. Wichtig ist dabei zu betonen: Es braucht an dieser Stelle kein Sonderinstrumentarium – Drewermanns tiefenpsychologische Exegese \citeyearpar{drewermann1984} steht hierfür als warnendes Gegenbeispiel –, keine künstlich erfundene „geistliche Exegese“, wie sie die anthroposophische Schriftdeutung Steiners \citeyearpar{steiner1910} und die Zahlenmystik Weinrebs \citeyearpar{weinreb1963} vorführen, und keine apologetischen Sonderregeln. Die etablierten historischen Methoden reichen völlig aus, um den Text in seiner menschlichen Entstehung und antiken Realität zu verstehen. Wir müssen die Werkzeuge der Forschung nicht verändern oder abschwächen, um den Glauben zu schützen, sondern wir müssen sie lediglich von weltanschaulichen Vorurteilen befreien. Dabei ist ausdrücklich festzuhalten: Die einzige Modifikation, die die \apth vornimmt, betrifft nicht das methodische Repertoire selbst, sondern ausschließlich den Hypothesenraum.
+
+\apthsec{13}{Monotheistisch adjungierte historische Methoden}{adjungierung} Wir weisen den Anspruch zurück, eine Geschichtsforschung ohne Gottesannahme sei rein „methodisch agnostisch“ und damit weltanschaulich neutral – eine heute vor allem als klinische Klammerung (bracketing) begegnende Haltung \citep{meier1991}, die historisch auf Troeltschs \citeyearpar{troeltsch1913} methodologisches Postulat des geschlossenen Kausalzusammenhangs zurückgeht. In einer von Gott geschaffenen und geprägten Wirklichkeit ist die methodische Klammerung göttlichen Handelns funktional identisch mit methodischem Atheismus \citep{schlatter1905,pannenberg1961,maier1974,linnemann1999}. Ausdrücklich stellen wir dabei klar: Die \apth beansprucht nicht, die etablierte historische Zunft als solche zu reformieren – wiewohl eine prinzipielle erkenntnistheoretische Revision durchaus angebracht wäre. Ihr allgemeines Instrumentarium bleibt für immanente Sachverhalte unangetastet und in seiner eigenen Zuständigkeit anerkannt. Was die \apth vornimmt, ist enger und bescheidener: Sie beseitigt für ihren klar umgrenzten Gegenstand – den biblischen Kanon (§~\ref{sec:kanon}), in dem nach Axiom II transzendente Wirkspuren bezeugt sind – einen blinden Fleck. Sie adjungiert der bestehenden historischen Methodik die monotheistische Prämisse ausdrücklich hinzu, statt sie wie der vermeintlich neutrale Agnostizismus unsichtbar zum Ausschlusskriterium zu machen – ein Vorgehen, das dem Einwand gegen den wissenschaftstheoretischen Parallelfall des methodologischen Naturalismus gleicht \citep{plantinga2011}. Wir nennen dieses Vorgehen \textit{monotheistisch adjungierte historische Methoden}. Ein echter, erfahrungsoffener Agnostizismus unterscheidet sich vom Atheismus gerade dadurch, dass er bei der historischen Abduktion (§~\ref{sec:inferenz}) göttliches Handeln als beste Erklärung dort zuzulassen bereit ist, wo rein immanente Erklärungsmodelle an den historischen Indizien scheitern \citep{keener2011,licona2010,wright2003}; diese Offenheit für das Einverständnis mit der überlieferten Wahrheit entspricht dem hermeneutischen Programm Stuhlmachers \citep{stuhlmacher1979,stuhlmacher1989} und dem Kritischen Realismus eines Wright \citep{wright1992}. Weil wir uns ausdrücklich zum monotheistischen Gottesglauben bekennen, erhebt die \apth nicht den Anspruch, eine weltanschaulich neutrale Methode zu sein. Sie ist vielmehr ein rational verantwortetes Instrumentarium, das den Glauben an Gott als transzendente Ursache der Wirklichkeit voraussetzt und die historische Analyse auf dieser Basis ermöglicht. Die \apth befreit die etablierten Werkzeuge der Geschichtswissenschaft sie vom atheistischen Vorurteil und bewahrt die historische Redlichkeit im ehrlichen Dialog mit den Zeugen.
+
+\apthsec{14}{Arbeitshypothese: Die messianische Erfüllungslogik}{erfuellungslogik} 
+\textit{Der Binnenbezug zwischen hebräischem Kanon und neutestamentlichem Zeugnis dient als regulatives Forschungs-Paradigma.}
+Die Arbeitshypothese hat zwei Richtungen und ist in beiden als falsifizierbare historische Aussage über die Texte selbst formuliert – nicht als vorausgesetzter Glaube:
+
+\subpar{(1) \textbf{Vorwärtsrichtung.} Der Tanach ist auf Erfüllung hin offen. Seine Verheißungen – Bundeszusage, Königsverheißung, neuer Bund, neuer Exodus – erzeugen einen Erwartungsüberschuss, der die jeweils innerzeitliche Erfüllung übersteigt und in der spätprophetischen und frühjüdischen Messiaserwartung ausdrücklich auf einen kommenden Gesalbten verweist \citep{zimmerli1952,vonrad1960,mowinckel1956,collins2010}.}
+
+\subpar{(2) \textbf{Rückwärtsrichtung.} Die neutestamentlichen Verfasser setzen diesen Deuterahmen voraus und erheben für Jesus und die Urgemeinde den Anspruch, dass Israels Geschichte und Verheißungen in ihm „nach den Schriften“ eschatologisch zur Erfüllung kommen \citep{dodd1952,goppelt1939,hays1989,huebner1990,wright1992}. Der Tanach ist damit nicht bloß Hintergrund, sondern das generative Bezugssystem der neutestamentlichen Illokutionen. Diese Voraussetzung behauptet nicht vorab den Beweis jeder Einzelpassage, sondern beschreibt die nachprüfbare Selbstverortung beider Textkorpora; als Arbeitshypothese bleibt sie fortlaufend überprüfbar und durch deduzierte Befunde modifizierbar oder widerlegbar.}
+
+\section*{IV. Wissenschaftliche Methodik und Glaube}
+
+\apthsec{15}{Für den Verstand}{kategorial} Die wissenschaftliche Methode und das intellektuelle Verstehen sind Teil der bereits erfolgten Schöpfung. Gott hat dem Menschen Verstand und Logik verliehen, und ein intellektuelles Erkennen der Textabsicht ist das primäre Ziel der Bibelauslegung. Wir distanzieren uns damit entschieden von allen antiintellektualistischen Strömungen, die den Verstand ausblenden und damit in einen verdeckten Skeptizismus verfallen – eine Gefahr, die Noll \citeyearpar{noll1994} und Moreland \citeyearpar{moreland1997} beschrieben haben und die Johannes Paul II. \citeyearpar{fidesetratio1998} als Fideismus benannt und zurückgewiesen hat. Als Vorgriff sei festgehalten: Selbst eine ausgereifte Theologie verurteilt den Verstand nicht, sondern weist ihm einen festen Platz zu – die klassische Unterscheidung von Kenntnis, Zustimmung und Vertrauen (\textit{notitia, assensus, fiducia}) setzt beim rationalen Erfassen des Zeugnisses an \citep{calvin1559}. Die volle Entfaltung des persönlichen Glaubens als \textit{fiducia} ist hier nicht Gegenstand. Zugleich gilt nüchtern: Ein Skeptiker lässt sich durch Rationalität schwer bis gar nicht überführen; der Skeptizismus ist ein tiefes Loch und gegen Argumente vollkommen immun \citep{wittgenstein1969}. Manche antiintellektuelle Strömung sieht in Argumenten sogar eine Bestätigung ihrer Weltsicht – der Widerspruch verstärkt die Überzeugung, statt sie zu erschüttern \citep{festinger1956,noll1994}. Um aus dieser hermeneutischen Erstarrung des Antiintellektualismus herauszufinden, bedarf es philosophischer Auswege und praktischer Befreiungsschritte. Epistemologisch entlarvt sich die absolute Skepsis als pragmatischer Selbstwiderspruch: Wer behauptet, man könne nichts sicher wissen, erhebt genau diesen Anspruch zum Wissen. Zudem scheitert der Zweifel am Alltag (Common Sense), da jede Handlung Vertrauen in Wahrnehmung und Logik erzwingt. Aus dem immunisierten Denken befreit kein rhetorischer Zwang, sondern: erstens sokratisches Hinterfragen, das die eigenen Falsifikationskriterien aufdeckt; zweitens emotionale Sicherheit, die die Entkopplung von Meinung und Identität ohne Gesichtsverlust erlaubt; und drittens das Vorleben epistemischer Demut und hermeneutischen Edelmuts (§~\ref{sec:tugenden}), das dem System sein Feindbild entzieht.
+
+\apthsec{16}{Würdigung des Vorwurfs der Wissenschaftsgläubigkeit}{wissenschaftsglaeubigkeit} An dieser Stelle ist ein Einwand aufrichtig zu würdigen, der vor allem aus antiintellektualistischer Richtung kommt: Wer die Bibel mit den Methoden der Wissenschaft untersuche, mache die moderne Wissenschaft zum Grundstein der Wahrheit. Hand aufs Herz: Eine „nackte“, voraussetzungslose Bibellesung ohne jede Brille existiert nur in der Phantasie von Sonntagsreden – jede Auslegung arbeitet mit einem Vorverständnis, und eine voraussetzungslose Exegese ist nicht möglich \citep{bultmann1957,gadamer1960}. Die einzige wirklich brillenfreie Auslegung ist die Methode „Bauchgefühl“ – sprich: Wahr ist, was beim Lesen eine wohlige Gänsehaut erzeugt\textinterrobang\space Wer nicht im Esoterik-Regal landen will, muss eine Brille wählen. Jede Auslegung arbeitet unvermeidlich mit einem Vorverständnis. Die eigentliche Frage ist daher nicht, ob man eine Brille trägt, sondern welche. Dass die \apth hier die moderne Wissenschaft wählt, hat einen einfachen Grund: Sie ist nach allem, was wir wissen, das Beste, was wir aktuell haben. Die Wahl des historisch-kritischen und analytischen Instrumentariums erfolgt nicht aus einem naiven Glauben an den Zeitgeist moderner Wissenschaft, sondern aus methodischer Notwendigkeit: Es stellt das bisher konsistenteste, intersubjektiv überprüfbare System dar, um historische Quelltexte auf ihre Entstehung und Intention hin zu untersuchen. Wer auf wissenschaftliche Werkzeuge verzichtet, ersetzt intersubjektive Überprüfbarkeit unvermeidlich durch unkontrollierte Subjektivität.Andere Brillen sind im Rahmen dieses Manifests aus je eigenen Gründen kritisiert worden und stehen als Alternative nicht mehr offen.
+
+\apthsec{17}{Exegese und Zeitkritik}{exegese-zeitkritik} Die methodische Reichweite der Exegese ist klar begrenzt. Exegese (von griech. ἐξήγησις, „Auslegung, Darlegung“) ist die methodisch kontrollierte, historisch-kritische Auslegung eines Textes; ihr Ziel ist die Rekonstruktion der zielgerichteten Sprachhandlung (Illokution) des antiken Verfassers in dessen historischem Kontext \citep{stuhlmacher1989}. Mit der Rekonstruktion dieser Illokution ist ihr Auftrag erfüllt. Alles Weitere betrifft nach \citet{hirsch1967} nicht mehr den Textsinn (\textit{meaning}), sondern dessen Signifikanz (\textit{significance}) für spätere Kontexte. Was danach kommt, ist daher keine Exegese mehr, sondern etwas anderes:
+
+\subpar{(1) \textbf{Abgrenzung zur Wirkungsgeschichte.} Die Wirkungsgeschichte ist ein eigener, legitimer Forschungsgegenstand (die Trennung von Perlokution und Wirkungsgeschichte ist in §~\ref{sec:sprechakttheorie} begründet): \citet{gadamer1960} hat gezeigt, dass kein Verstehen außerhalb der Geschichte der Wirkungen eines Textes steht, und \citet{luz1985} hat sie als eigenständige exegetische Perspektive ausgearbeitet. Sie beantwortet aber nicht die Frage, was der antike Verfasser mit seinem Text getan hat. Für die Rekonstruktion dieser Illokution wird die Wirkungsgeschichte daher nur insoweit beigezogen, als sie den Blick auf den antiken Text schärft – als heuristischer Indikator, nicht als Urteilsgegenstand.}
+
+\subpar{(2) \textbf{Abgrenzung zur Bewegungskritik.} Die Bewertung fremder Bewegungen oder heutiger Gemeinschaften ist eine systematisch-theologische und konfessionskundliche Aufgabe, kein exegetisches Urteil. Wer eine Textstelle zur Waffe gegen andere macht, verlässt selbst die Illokution des Textes und verfällt in den verdeckten Fehler, den er andernorts bekämpft: Er liest nicht mehr, was der antike Zeuge tun wollte, sondern was seine eigene Gegenwartspolemik braucht.}
+
+\apthsec{18}{Abgrenzung der Exegese}{abgrenzung-exegese}
+Wir trennen damit strikt zwischen dem, was der Text sagt und will, und dem, was spätere Leser mit ihm anfangen \citep{hirsch1967}. Nur so bleibt die Exegese historisch redlich und vor dem Missbrauch des Textes als Mittel weltanschaulicher Auseinandersetzung bewahrt. Zugleich endet die Arbeit nicht mit der Exegese: Eine ausgearbeitete Exegese taugt als Referenzpunkt, von dem aus wirkungsgeschichtliche Einordnungen oder eine konkrete Bewegungskritik vorgenommen werden können. Theologisch gesprochen ist das die klassische Unterscheidung zwischen Exegese – der historischen Rekonstruktion der Sprachhandlung – und Hermeneutik im weiteren Sinn, die auch das Anwenden des Textes auf die Gegenwart umfasst; das Wort „Hermeneutik“ trägt freilich viele Bedeutungen \citep{ebeling1959}. Die Unterscheidung geht auf die ältere protestantische Hermeneutik zurück, die neben Verstehen (\textit{subtilitas intelligendi}) und Auslegen (\textit{subtilitas explicandi}) eigens das Anwenden (\textit{subtilitas applicandi}) unterschied \citep{rambach1723}; \citet{gadamer1960} hat dieses Moment der Applikation als unaufgebbaren Teil des Verstehens selbst wiederentdeckt. Diese weiterführenden Schritte werden von der \apth selbst jedoch nicht diskutiert.
+
+\apthsec{19}{Widerlegung des Verwässerungsvorwurfs}{verwaesserung} Aus konservativer oder fundamentalistischer Ecke wird an dieser Stelle womöglich der Vorwurf erhoben, wer diese Methoden verwende, rutsche unweigerlich in die liberale Theologie ab und löse den Glauben auf. Dieser Vorwurf beruht jedoch auf einem Denkfehler, da er das analytische Werkzeug mit dem atheistischen Axiom der liberalen Exegese verwechselt \citep{schlatter1905,troeltsch1913}. Wer die historische Methode nutzt, betreibt keinen Abbau des Glaubens \citep{stuhlmacher1979,wright1992,enns2005,sparks2008}. Das Abrutschen in die liberale Theologie geschieht nicht durch die Sprach- oder Quellenanalyse, sondern erst dann, wenn man das Postulat übernimmt, Gott könne nicht in die Geschichte eingreifen \citep{harvey1966,lessing1777}. Da unser Denkmodell dieses atheistische Postulat durch die vorgelagerte Axiomkette explizit ausschließt, bleibt die Substanz des Offenbarungsglaubens vollkommen unangetastet. Die fundierte Textforschung wird so nicht zum Feind des Glaubens, sondern zum Garanten einer historischen Redlichkeit, die vor Naivität ebenso schützt wie vor Säkularismus.
+
+\apthsec{20}{Gegen die selektive Relativierung}{selektive-relativierung} Ebenso schützt diese Haltung davor, in das Extrem einer übermäßig symbolischen Umdeutung zu geraten: Etwa der Behauptung, Gott existiere und handle zwar, aber das Kreuz sei lediglich ein zeitloses Symbol für Liebe oder die Auferstehung nur ein Bild für das Weiterleben einer Idee. Wichtig ist die Unterscheidung zum Vorherigen: Diese Relativierung geschieht nicht aus dem atheistischen Axiom heraus, sondern bei Menschen, die durchaus an Gott glauben – die nur manche Dinge nicht glauben. Ein solches selektives Festhalten am Angenehmen bei gleichzeitiger symbolischer Entschärfung des Anstößigen ist kein redliches Lesen, sondern Wunschdenken: Es bewahrt die Hülle des Glaubens und leert seinen Inhalt – der Sache nach eine andere Religion \citep{machen1923}. Die historischen Methoden zeigen unmissverständlich, dass die neutestamentlichen Zeugen keine zeitlosen Symbole vermitteln wollten, sondern behaupten, dass reale, einschneidende Ereignisse in Raum und Zeit stattgefunden haben \citep{wright2003}. Wer einzelne dieser Zeugnisse nicht glauben will, muss sie ehrlich verwerfen; sie dagegen zu Metaphern abzumildern, während man im Übrigen glaubt, ist weder historisch noch existentiell redlich \citep{lewis1967,bultmann1941}. Eine verwandte Spielart desselben Fehlers sucht bei den Wundern den „realen Kern“ in einem natürlich erklärbaren Vorgang – etwa Jesu Gang über den See als Waten über eine Sandbank oder die Speisung der Fünftausend als geteilter Proviant – und hält damit das Ereignis der Hülle nach fest, während sie das Wunder als Wunder auflöst \citep{paulus1828}.
+
+\apthsec{21}{Keine Tiefen-Harmonisierung}{tiefen-harmonisierung} Die \apth fordert ausdrücklich nicht, aus erkennbaren Widersprüchen, Fehlern oder Unstimmigkeiten eines Textes auf ein höheres Prinzip zu schließen, das dennoch der absoluten Wahrheit entspricht. Genau diesen Kurzschluss vollziehen heute manche Bewegungen: Wo der Text Spannungen oder Irrtümer zeigt, unterstellen sie eine verborgene Tiefenebene, die fehlerfrei und absolut wahr sei – exemplarisch die Lehre vom \textit{sensus plenior} \citep{brown1955} und die apologetische Harmonisierung vermeintlicher Widersprüche \citep{archer1982}. Eine solche Annahme ist dem menschlichen Autor gegenüber eine Unterstellung – wir können nicht wissen und behaupten nicht, dass der antike Verfasser mit seinen Worten auf ein solches Prinzip zielte. Auch wo der Text göttliches Handeln bezeugt, folgt daraus kein Zwang: Es ist möglich, dass hinter einem Zeugnis göttliche Wahrheit steht, aber eine Pflicht, in jedem Fall ein höheres, die Widersprüche auflösendes Prinzip anzunehmen, besteht nicht; die historisch-kritische Forschung hat vielmehr die Vielfalt und die Spannungen des Kanons als gegeben herausgearbeitet und künstliche Harmonisierung zurückgewiesen \citep{kaesemann1951,dunn1977,enns2005}. Die \apth erzwingt keine Tiefen-Harmonisierung; sie nimmt den Text so ernst, wie er ist.
+
+\apthsec{22}{Wider den Kollaps-Einwand}{kollaps} Vertreter einer absoluten Irrtumslosigkeit halten an dieser Stelle oft ein scheinbar zwingendes Argument entgegen: \textit{Wenn wir Widersprüche im Text zugeben, wie können wir dann noch dem Kreuz glauben?} Wer einen Irrtum zugesteht, so der Einwand, habe die ganze Schrift aufgegeben; Widerspruchsfreiheit sei die tragende Säule des Glaubens. Dieser Einwand beruht auf einem doppelten Denkfehler, den die \apth präzise benennen kann.
+
+\subpar{(1) \textbf{Die Verwechslung von Faktum und Format.} Der Einwand behandelt die Schrift als ein homogenes, propositionales System, in dem jede Aussage gleich viel systemkritisches Gewicht trägt. Ein Konflikt in der antiken Chronologie oder Kosmologie (Format) soll so unmittelbar das kerygmatische Zentrum (Faktum) erschüttern. Das ist ein Kategorienfehler. Die Totenauferweckung Christi ist ein Ereignis in Raum und Zeit; die Frage, wie viele Jahre die Dürre unter Elia dauerte, ist ein Zug der antiken Überlieferungsgestalt. Die Wahrheit des einen hängt nicht an der Perfektion des anderen \citep{wright2005}.}
+
+\subpar{(2) \textbf{Die falsche Wurzel.} Der Glaube an Kreuz und Auferstehung ruht nicht auf einer deduktiven Kette („weil jeder Satz der Bibel wahr ist, deshalb ist auch das Kreuz wahr“), sondern auf der Inferenz auf die beste Erklärung (vgl. §~\ref{sec:inferenz}). Die Auferstehung erklärt die radikale Verhaltensänderung der Zeugen, die Entstehung der Urgemeinde und die Bereitschaft zum Martyrium kohärenter als jede rein immanente Alternative. Diese Erklärungskraft wird von abweichenden Detailperspektiven der Evangelisten oder von Traditionsverschiebungen in Randfragen nicht berührt. Im Gegenteil: Kleine Unstimmigkeiten, unterschiedliche Perspektiven und redaktionelle Eigenheiten mindern die Glaubwürdigkeit keineswegs – in der historischen Wissenschaft gelten solche menschlichen Brechungen als starkes Indiz gegen Absprachen oder nachträgliche Fälschungen; gerade die Fehler und Nuancen der menschlichen Zeugen machen ihre Berichte historisch glaubwürdiger. Wer auf Widerspruchsfreiheit als Fundament setzt, hat den Glauben auf die fragilste aller Säulen gebaut \citep{bauckham2006}.}
+
+\subpar{(3) \textbf{Das Inkarnations-Analogon und die historische Reihenfolge.} Der Einwand übersieht zudem, dass die Schrift nach Analogie der Menschwerdung ganz menschliche Züge trägt: Wie Christus ganz Mensch und ganz Gott ist, so ist die Schrift ganz menschliches, kultur- und zeitgebundenes Wort – und eben dadurch Zeugnis des göttlichen Handelns \citep{enns2005}. Die historische Reihenfolge bestätigt dies: Die Urgemeinde glaubte an Kreuz und Auferstehung, lange bevor ein einziger neutestamentlicher Text existierte. Der Glaube an das Ereignis ging dem Text voraus, nicht umgekehrt. Wer den Glauben vom fehlerfreien Text abhängig macht, kehrt diese Reihenfolge um \citep{sparks2008}.}
+
+\section*{V. Anwendung}
+
+\apthsec{23}{Notwendigkeit von Haltungstugenden}{tugenden} Da jede historische und hermeneutische Methode auf Menschen trifft, die unter Bedingungen von Unvollständigkeit und Unschärfe Entscheidungen treffen müssen, erfordert die \apth neben dem wissenschaftlichen Handwerkszeug folgende Gesinnungstugenden \citep{zagzebski1996}:
+
+\subpar{(1) \textbf{Intellektuelle Redlichkeit (\textit{Honestas Epistemica}):} Die unbestechliche Bereitschaft, den Befund so stehenzulassen, wie er sich ergibt – auch wenn er eigene Vorlieben, apologetische Ziele oder gewohnte Frömmigkeitsmuster beschädigt oder infrage stellt \citep{williams2002}.}
+
+\subpar{(2) \textbf{Epistemische Demut (\textit{Humilitas Scientiae}):} Das bewusste Eingeständnis der eigenen Perspektivität und Fehlbarkeit. Die Einsicht, dass das eigene Verstehen immer nur „das Beste ist, was wir aktuell wissen“, bewahrt vor dogmatischem Absolutheitsanspruch und hält für bessere Begründungen offen \citep{popper1963}.}
+
+\subpar{(3) \textbf{Hermeneutischer Edelmut (\textit{Nobilitas Mentis}):} Eine großherzige, vorurteilsfreie Grundhaltung (vgl. εὐγενέστεροι in Apg 17,11). Man begegnet dem Text und seinen Zeugen weder mit zynischer Herablassung noch mit blindem Kadavergehorsam, sondern mit aufrichtigem Respekt auf Augenhöhe \citep{davidson1974,jacobs2001}.}
+
+\subpar{(4) \textbf{Ambiguitätstoleranz (\textit{Tolerantia Ambiguitatis}):} Die Fähigkeit, offene Fragen, Wissenslücken und ungeklärte Rest-Spannungen im Text aushalten zu können, ohne sie vorschnell durch künstliche Harmonisierungen oder pragmatische Abkürzungen gewaltsam aufzulösen \citep{frenkelbrunswik1949}.} 
+
+\apthsec{24}{Historische Heuristik: Bekenntnisfähigkeit des Befundes}{heuristik-befund} Gegenstandsgemäße Forschung führt mit hoher Wahrscheinlichkeit zu Befunden, die sich mit den altkirchlichen Symbola decken. Auf der Grundlage der Inferenz auf die beste Erklärung formulieren wir die begründete Erwartung (Heuristik), dass eine historisch redliche Erforschung der biblischen Illokutionen in ihren Kernaussagen nicht zu einem Abbau des Offenbarungsglaubens führt. Es ist mit hoher Wahrscheinlichkeit zu erwarten, dass die ergebnisoffene historische Rekonstruktion Befunde hervorbringt, die in den wesentlichen Gehalten der altkirchlichen Glaubensbekenntnisse (Apostolikum und Nicaeno-Constantinopolitanum) abgebildet sind. Diese Übereinstimmung wird nicht dogmatisch erzwungen, sondern ergibt sich als rational erwartbare Konsequenz einer geschichtswissenschaftlich redlichen Arbeit am Text. Diese Heuristik ist ausdrücklich nur ein Ausblick und darf nicht als Zirkelschluss missverstanden werden, der das Ergebnis der Methode vorwegnimmt: Die Methode selbst bleibt jederzeit ergebnisoffen, und diese Erwartung beweist nichts. Sie ist vielmehr die ehrliche Überlegung, ob diese ergebnisoffen formulierte Methode – wider des Glaubens der Ausführenden – nicht doch in die Häresie oder in die Apostasie führt. Der Verfasser jedenfalls ist bis zum heutigen Tage nicht vom Glauben abgefallen und ist nie mit apologetischen Absichten an die Texte herangetreten. Aus dem redlich verstandenen Befund und dem existenziellen Glauben (vgl. §~\ref{sec:kategorial}) erwachsen schließlich die angewandten Disziplinen wie Ethik und Ekklesiologie.
+
+\apthsec{25}{Erwartung zur Infallibilität}{infallibilitaet} Wie der Befund in §~\ref{sec:heuristik-befund} läuft auch diese Stellungnahme als begründete Erwartung, nicht als Dogma. Die \apth spricht dabei bewusst vom Fremdwort \textit{Infallibilität} (abgeleitet aus dem englischen Wort \textit{infallibility}) und übersetzt es pragmatisch als \textit{Unfehlbarkeit in den zentralen Glaubens- und Lebensfragen}; die verbreitete Wiedergabe „Irrtumslosigkeit“ ist irreführend, weil sie eine absolute Fehlerfreiheit in jedem Wortdetail nahelegt. Die Erwartung beruht auf einer Induktion: Aufgrund der historischen Entwicklung und Auswahl des Kanons sind Texte, die den zentralen Glaubensfragen grob widersprachen, im Zuge der altkirchlichen Ausscheidungsprozesse gerade nicht in den Kanon aufgenommen worden. Daraus lässt sich induktiv schließen, dass eine ursprüngliche, minimale Gestalt der Infallibilität – die Zuverlässigkeit des Kanons in seinen Kernaussagen – von Vertretern der \apth wahrscheinlich eingenommen werden kann, um sich innerhalb der theologischen Landschaft klar zu positionieren. Sie bleibt jedoch ausdrücklich kein Dogma und hängt stark von der gewählten Definition ab: Ob man Infallibilität maximal (kein einziger Irrtum an irgendeiner Stelle an der die Bibel die Erlangung des Heils, den Glauben und das christliche Leben erwähnt) oder minimal (kein Irrtum im Entscheidenden) fasst, verändert den Anspruch grundlegend. Dass Zurückhaltung geboten ist, zeigen allen voran die Befunde der historisch-kritischen Forschung: Wo ihre Vertreter die ethischen und andere Fragen der kanonischen Schriften sichten, treten sehr schnell interne Spannungen und Widersprüche zutage \citep{dunn1977,kaesemann1951,ehrman2009}. Solche Befunde würden Vertreter der \apth – methodisch konsequent – wahrscheinlich ebenfalls finden und gemäß §~\ref{sec:tiefen-harmonisierung} stehenlassen, ohne sie zu harmonisieren. Eben darum bleibt die Infallibilität für die \apth eine Erwartung und kein Axiom.
+
+\section*{Schluss}
+\begin{quote}
+Dieses Manifest ist die Frucht einer tiefen Suche nach intellektueller Kohärenz und innerer Gewissheit. Für Menschen, die in den Denkkategorien der modernen Logik, Epistemologie und Wissenschaftstheorie geschult sind, wird der Wunsch nach einem Tragfundament des Glaubens zu einer existenziellen Aufgabe. Die Suche nach echter historischer und logischer Redlichkeit erweist sich dabei als ein tragender Boden, auf dem ein vernunftverantworteter Glaube in voller Klarheit stehen kann.  
+
+Genau aus diesem Grund trägt dieser Ansatz den Namen \textit{Approbatio Testimonii Historica} – die Anerkennung des historischen Zeugnisses. Der Begriff bringt die Absicht auf den Punkt: Er verbindet die unbestechliche Prüfung und Bestätigung (\textit{approbatio}) mit dem tiefen Respekt vor der konkreten Aussage der antiken Augenzeugen (\textit{testimonium}), die ihr Erleben in Raum und Zeit hinterlassen haben. Es ist die Anerkennung, dass Gottes Handeln Spuren in der realen Geschichte hinterlässt und dass die Werkzeuge der Vernunft dazu dienen, diese Zeugnisse in ihrer antiken Sprachabsicht zu verstehen.  Die \textit{Approbatio Testimonii Historica} versteht das Instrumentarium der Geschichtswissenschaft als ein Geschenk der Schöpfung. Sie nutzt den Verstand, um die historische Erklärungs-Kraft der biblischen Zeugnisse freizulegen und den Glaubenden in eine aufrichtige, angstfreie Begegnung mit den Quellen zu führen.
+
+Die Erkenntnis bleibt ein fortwährender Prozess, und längst sind nicht alle Fragen beantwortet oder alle Spannungen gelöst. Dieser Ansatz versteht sich nicht als militantes Bekenntnis oder unfehlbares Dogma, das andere aburteilt, sondern als ein friedlicher, friedensstiftender Einladungsraum zur gemeinsamen Wahrheitssuche. Wo Wissenschaftlichkeit, Offenheit und Glaubensgewissheit Hand in Hand gehen, entfaltet die Wahrheit ihre volle Strahlkraft. Darum gilt:
+\end{quote}
+
+\begin{center}
+{\large\itshape Fides non timet veritatem.}\\[0.3em]
+{\small (Der Glaube fürchtet die Wahrheit nicht)}
+\end{center}
+
+\vspace{0.2cm}
+\begin{flushright}
+{\scshape Kaiserslautern, den \today}
+\end{flushright}
+
+\vspace{1.1cm} % Platz für die handschriftliche Unterschrift
+
+\noindent
+\begin{minipage}[t]{0.45\textwidth}
+  \hrulefill \\[0.4em]
+  \textbf{Verfasser / Initiator}\\[0.2em]
+  {\small Jason A. Schurawel}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+  \hrulefill \\[0.4em]
+  \textbf{Erstunterzeichner}\\[0.2em]
+  {\small ---}
+\end{minipage}
+
+\newpage
+\bibliographystyle{apalike}
+\bibliography{literatur}
+
+\end{document}

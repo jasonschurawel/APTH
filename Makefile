@@ -10,7 +10,7 @@ all: $(PDF)
 
 %.pdf: %.tex
 	lualatex -interaction=nonstopmode -halt-on-error $<
-	bibtex $(basename $@)
+	@if grep -q bibdata $(basename $@).aux; then bibtex $(basename $@); fi
 	lualatex -interaction=nonstopmode -halt-on-error $<
 	lualatex -interaction=nonstopmode -halt-on-error $<
 

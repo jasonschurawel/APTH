@@ -12,7 +12,7 @@
 *.lot
 
 # Generierte PDF (wird von GitHub Actions gebaut)
-erklärung.pdf
+apth_declaration_de.pdf
 
 # Betriebssystem
 .DS_Store

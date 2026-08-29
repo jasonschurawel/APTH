@@ -26,14 +26,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: APTH-PDF
-          path: erklärung.pdf
+          path: apth_declaration_de.pdf
 
       - name: Delete previous release
-        run: gh release delete ausgabe-1 --yes --cleanup-tag || true
+        run: gh release delete v1-2026-08-29 --yes --cleanup-tag || true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create release
-        run: gh release create ausgabe-1 "erklärung.pdf#APTH-Ausgabe-1.pdf" --title "APTH – Ausgabe 1" --notes "Erste Ausgabe des APTH, gebaut per GitHub Actions."
+        run: gh release create v1-2026-08-29 "apth_declaration_de.pdf#APTH-Ausgabe-1-2026-08-29.pdf" --title "APTH – Ausgabe 1 (2026-08-29)" --notes "Erste Ausgabe des APTH, gebaut per GitHub Actions."
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

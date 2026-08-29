@@ -1,10 +1,6 @@
 # APTH
 
-The Approbatio Testimonii Historica (APTH) is a declaration setting out the principles and standards that govern the historical assessment and recognition of testimony.
-
-## Summary
-
-This repository contains the APTH declaration in three language versions: German (`apth_declaration_de.tex`), English (`apth_declaration_en.tex`), and Latin (`apth_declaration_la.tex`). The PDFs are compiled with LuaLaTeX and built automatically by GitHub Actions whenever changes are pushed to a release branch (`release/**`); the resulting documents are published as GitHub Release assets. The repository is developed on the `trunk` branch, and release branches are used for published editions.
+The Approbatio Testimonii Historica (APTH) is a declaration on the historical integrity and hermeneutics of the biblical writings. It addresses the question of the reliability of the biblical testimony and argues that the three dominant approaches to this question — the doctrine of absolute inerrancy, liberal theology, and anti-intellectualism — each fail for epistemological reasons. The APTH proposes a third way that combines critical realism, a clear axiomatic foundation, and the established methods of historical scholarship. It draws a strict distinction between the facticity of God's action in space and time and the literary format of the ancient testimony, and it grounds this approach on two axioms: the existence of God as the transcendent, personal cause of creation, and the historical traceability of divine action in human history. In this way the APTH seeks to approach the biblical testimony on equal footing with scientific reason and in full intellectual honesty.
 
 ## Legal Notice
 

@@ -42,7 +42,7 @@ jobs:
             "apth_declaration_de.pdf#APTH-declaration-de-v1-2026-08-29.pdf" \
             "apth_declaration_en.pdf#APTH-declaration-en-v1-2026-08-29.pdf" \
             "apth_declaration_la.pdf#APTH-declaration-la-v1-2026-08-29.pdf" \
-            --title "v1-2026-08-29" \
+            --title "APTH v1 - 2026-08-29" \
             --notes "First release of the APTH declaration, built automatically via GitHub Actions. Includes German (de), English (en), and Latin (la) versions."
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

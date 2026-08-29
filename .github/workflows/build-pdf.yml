@@ -17,7 +17,7 @@ jobs:
       - name: Install LaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive-luatex texlive-latex-extra texlive-bibtex-extra texlive-fonts-recommended texlive-lang-german
+          sudo apt-get install -y texlive-luatex texlive-latex-extra texlive-bibtex-extra texlive-fonts-recommended texlive-fonts-extra texlive-lang-german
 
       - name: Build PDF
         run: make

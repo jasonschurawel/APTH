@@ -1,6 +1,6 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage{fontspec}
-\usepackage[main=latin]{babel}
+\usepackage[latin]{babel}
 \usepackage{libertinus}
 \usepackage{geometry}
 \geometry{a4paper, margin=2.5cm, headheight=14pt}
@@ -13,33 +13,274 @@
 \usepackage{xspace}
 \usepackage{textcomp}
 
+\providecommand{\harvardand}{et}
+\renewcommand{\refname}{Bibliographia}
+
+% Iussum proprium pro capitulis (cavet monitis de capitulis pinguibus)
+\newcommand{\scbold}[1]{{\normalfont\scshape #1}}
+
+% Iussum signi pro Approbatione Testimonii Historica (\apth)
+% Chorus unicam tantum faciem habet; ideo omnes series/facies ad eandem
+% faciem reducuntur (UprightFont=* etc.), ut monita de fontibus vitentur.
+% Scale=MatchLowercase efficit, ut magnitudo litterarum Libertino perfecte respondeat.
+\newfontfamily\apthfont{TeX Gyre Chorus}[
+  Scale=MatchLowercase,
+  UprightFont=*,
+  ItalicFont=*,
+  BoldFont=*,
+  BoldItalicFont=*,
+  SlantedFont=*,
+  BoldSlantedFont=*]
+\newcommand{\apth}{{\apthfont APTH}\hspace{0.15em}\xspace}
+
+% Iussum auxiliare pro paragraphis ad morem codicis plene indentationibus (1), (2)...
+\newcommand{\subpar}[1]{%
+  \begingroup
+  \leftskip=2em % Integra indentatio a sinistra
+  \noindent#1\par
+  \endgroup
+}
+
+% Sectiones manualiter numeratae cum relationibus dynamicis:
+% \apthsec{<numerus>}{<titulus>}{<label>} titulum sectionis pinguem ponit
+% et ancoram collocat, ita ut relationes per \ref{sec:<label>}
+% sponte migrent, cum sectiones renumerantur.
+\makeatletter
+\newcommand{\apthsec}[3]{%
+  \phantomsection%
+  \def\@currentlabel{#1}%
+  \label{sec:#3}%
+  \textbf{§ #1 [#2]}%
+}
+\makeatother
+
+% Dispositio & caput/pes paginae
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\scshape Manifestum Approbationis Testimonii Historici}
-\fancyhead[R]{\thepage}
+\fancyhead[L]{\small\scshape Manifestum Approbationis Testimonii Historicae}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
 
-\title{APTH -- Latin Sample}
-\author{[Auctor]}
-\date{[Dies]}
+% Caput in prima pagina celare
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% Formae titulorum
+\titleformat{\section}{\large\bfseries\centering}{}{0pt}{}[\vspace{0.1cm}\hrule]
+\titleformat{\subsection}{\bfseries}{}{0pt}{}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.8em}
+
+% Lineae orphanae et viduae vitandae
+\clubpenalty=10000
+\widowpenalty=10000
+\brokenpenalty=10000
 
 \begin{document}
 
-\maketitle
+% Unica clara structura tituli & subtituli in pagina 1
+\begin{center}
+    \thispagestyle{plain} % Caput in pagina 1 supprimit
+    {\huge\bfseries Declaratio de probitate historica et hermeneutica scripturarum biblicarum\par}
+    \vspace{0.4cm}
+    {\Large\itshape Manifestum Approbationis Testimonii Historicae (\apth)\par}
+    \vspace{0.3cm}
+    {\rule{0.5\textwidth}{0.4pt}\par}
+    \vspace{0.2cm}
+    {\large\scshape Kaiserslautern, prima versio, \today \par}
+\end{center}
 
-\begin{abstract}
-[Sample content -- to be written.]
-\end{abstract}
+\vspace{0.4cm}
 
-\section{Introductio}
-[Sample content -- to be written.]
+\section*{Praefatio}
 
-\section{Praefatio}
-[Sample content -- to be written.]
+Quaestio de fide scripturarum biblicarum universam Christianitatem, praeter traditiones mere institutionales et auctoritarias, in labyrinthum quendam \textit{trilemma} deduxit. Tres sententiae dominantes hodiernam cogitationem informant -- doctrina absolutae \textit{inerrantiae}, theologia liberalis et anti-intellectualismus --; quae omnes, accurata consideratione \textit{epistemologica} adhibita, fundamentales errores esse demonstrantur.
 
-\section{Declaratio}
-[Sample content -- to be written.]
+Ab una parte stat doctrina absolutae \textit{inerrantiae}, qualis exemplariter in Declaratione Chicaginiensi formata est \citep{icbi1978}. Hoc axioma absolutae, contradictionis expertis errorum vacuitatis historice ex protestantismo Americae septentrionalis saeculi undevicesimi originem ducit \citep{rogersmckim1979}; hodie autem usque ad absurditatem adigitur. Postulatio absolutistica de forma sermonis neque ex ipsa Scriptura neque ex logica derivari potest. Ubi tamen retinetur, absurda sequentia cogit, quae omnis sanae mentis homo repudiaret -- veluti vespertiliones esse aves (Lev 11,19), insecta quattuor pedibus incedere (Lev 11,20--23) aut terram firmo caeli tholo cum aquis supra positis contegi (Gen 1,6--8) \citep{wells2013} --; atque Christianitatem in lite fundamentalismi penitus divisit \citep{marsden2006}. Simul fidem perfectioni singulorum verborum textus, omni errore carenti, alligat: prima contradictione agnita apud multos tota fides ruit \citep{ehrman2009}. Locum singularem hic obtinet interpretatio classica historico-grammatica: ea quidem textum instrumentis philologiae et historiae tractare profitetur, nolens autem videre, quid ex proprio axiomate sequatur. Honesta grammaticae et contextus analysis necessario incidit in imagines mundi inter se non compatibiles, errores logicos et contradictiones -- inventa, coram quibus postulatum absolutae errorum vacuitatis stare non potest. Qui hanc praemissam pertinaciter tenet, eventus suae ipsius methodi, ubi res poscit, abicere debet atque in conciliationem coactam incidit, quam cum probitate historica confundit. Ab altera parte stat theologia liberalis cum suo atheismo methodico. Ipsa dogma non fundatum conexus causalis clausi ponit \citep{troeltsch1913,schlatter1905}, omnem traditionem actionis divinae ab initio tamquam mythum abicit \citep{bultmann1941} atque revelationi nucleum realem eripit. Denique anti-intellectualismus in fallaciam incidit, quasi nulla interpretatione opus sit (``hic enim apertissime scriptum est''), quo propriam subiectivitatem non excussam ad mensuram veritatis elevat \citep{noll1994}.
 
-\section{Bibliographia}
-[Sample content -- to be written.]
+\section*{I. Cur viae receptae deficiant}
+
+Tribus his viis erroneis communis subest error categorialis hermeneuticus: veram actionem sermonis et intentionalitatem textus non attingunt, quia formam sermonis antiquam aut perpetam intellegunt aut permiscent aut deprimunt. Quisque suo modo ignorat, quid testis antiquus scribendo re vera agere atque efficere voluerit:
+
+\subpar{(1) \textbf{Fundamentalismus} formam exteriorem textus absolvit. Praesupponit textum divinitus inspiratum in omnibus suis singulis linguisticis et ideologicis postulationem veritatis erroris expertem implere debere. Cum deinde imagines mundi non compatibiles, errores logici aut contradictiones emergunt, id aut ad conciliationem coactam aut ad fidem cogitionibus expositis obnoxiam ducit \citep{barr1977}.}
+
+\subpar{(2) \textbf{Theologia liberalis} huic postulationi absoluti confusionem specularem opponit. Quia formam textus antiquam (cum suis imaginibus mundi et formis) ab ea realitate, quae in eo attestatur, separare non potest aut non vult, totum -- capta conexu causali clauso -- tamquam mythum abicit. Nucleum realem eventuum sacrificat, quia formam sermonis antiquam serio accipere non potest, quin eam ad litteram accipiat \citep{schlatter1905,machen1923}.}
+
+\subpar{(3) \textbf{Anti-intellectualismus} denique referentiam historicam omnino praecidit. Dum postulat Scripturam omnino sine mediatione se ipsam explicare, propriam experientiam praesentis temporis non excussam ad mensuram elevat et intentionem historicam auctoris per sensum aedificationis subiectivum substituit \citep{noll1994}.}
+
+Omnes tres sententiae eo offendunt, quod textum ad id reducunt, quod pure externe praebet, potius quam quaerunt, ad quid referat.
+
+Praeter tres sententias principales memoratas alii accessus efficaces exstant -- velut theologia dialectica Caroli Barth, interpretatio existentialis Bultmanni aut hermeneutica moderna canonico-narrativa \citep{barth1922,bultmann1941,childs1979,frei1974} --, qui nucleum realem historiae primario tamquam allocutionem existentialem, mythum aut mundum narrationis purum accipiunt. Quamquam foveas \textit{inerrantiae} vitare volunt, tamen, contra tres errores pragmaticos, in circulum vitiosum epistemologicum fundamentalem incidunt: veritatem Scripturae ex proprio systemate interno ponunt -- sive per eventum Spiritus indebitum in auditore, sive per evidentiam sui actus fidei, sive per logicam narrationis canonis in se clausam. Dum hi accessus significationem testimonii ab eius examinabilitate historica seiungunt, id quod concludendum est iam in puncto exeundi axiomatice praesupponunt. Talis circulus vitiosus epistemologice nullius pretii est, quia systema clausum creat, quod se ipsum immunem reddit, nullam veram cognitionem acquirit et omnem officium rationis reddendae recusat \citep{popper1963}. Hanc ipsam circularitatem iam Pannenberg \citeyearpar{pannenberg1961,pannenberg1973} adversus evidentiam sui revelationis atque Barr \citeyearpar{barr1983} et Tracy \citeyearpar{tracy1981} adversus logicam narrationis canonicae exposuerunt.
+
+Si neque coacta expolitio formae sermonis neque dissecatio materialistica neque recusatio naiva laboris ad textum viam stabilem ostendit -- quid tum restat?
+
+Exitum quendam ex hoc fundamentali defectu viarum receptarum accessus hic evolutus praebet, quem in sequentibus \textit{Approbationem Testimonii Historicam} (\apth) appellamus.
+
+\section*{II. Fundamenta \textit{Approbationis Testimonii Historicae}}
+
+\apthsec{1}{Nucleus methodicus}{kerngedanke} \apth coniungit fundamentum epistemologicum realismi critici, derivationem axiomaticam claram et instrumentarium receptum scientiae historicae. Testimonio biblico intra fines Approbationis ex aequo occurrimus cum ratione scientifica et in summa probitate.
+
+\apthsec{2}{Distinctio facti et formae}{faktum-format}
+\apth stricte distinguit inter facticitatem ontologicam actionis Dei in spatio et tempore et formam litterariam traditionis antiquae. Haec distinctio non est regula hermeneutica specialis, sed res fundamentalis semiotica: nullus textus historiae humanae idem est ac realitas, ad quam refert; lingua semper est eius repraesentatio signo expressa. Lingua numquam est eventus ipse, sed -- ut metaphorice loquamur -- tabula geographica regionis: qui formam et factum confundit, in tabula ambulare conatur; qui tabulam abicit, quia tantum ex charta constat, sensum directionis amittit. Hac methodo \apth traditionem classicae \textit{doctrinae duorum librorum} resumit: Deus se revelat tum in ``libro naturae'' (realitate empirica, quae rationi et scientiae aperta est) tum in ``libro Scripturae'' (attestatione fidei signo expressa). Forma et factum igitur non in contradictione, sed in relatione complementaria mutuae referentiae consistunt.
+
+\apthsec{3}{Axioma I: Exsistentia Dei}{axiom-i}
+\textit{Mundus est productum ordinatum causae transcendentis, personalis.}
+Spatium, tempus et materia sunt realitas creata. Eorum ordo et describibilitas ad causam transcendentem, personalem referunt: ad Deum, fontem personalem spatii, temporis et materiae.
+
+\apthsec{4}{Axioma II: Vestigia historica efficientiae transcendentis}{axiom-ii}
+\textit{Actio divina in realitate relinquit effectus historice comprehensibiles.}
+Deus creator personalis non in distantia a creatione permanet. Eius actio in spatio et tempore relinquit vestigia et effectus empirice observabiles in historia humana, qui analysi historicae patent.
+
+\apthsec{5}{Functio epistemologica axiomatum I \& II}{axiom-funktion}
+\textit{Axiomata spatium possibilitatis scientificum sine circulo vitioso definiunt.}
+Nullum circulum vitiosum (cf. caput I) constituunt, quia nullum interpretationis eventum praescribunt. Actionem divinam in spatio hypothesium historicarum demum cogitabilem reddunt.
+
+\apthsec{6}{Axioma III: Canon biblicus tamquam spatium efficientiae specificum}{kanon}
+\textit{Spatium historicum vestigiorum efficientiae transcendentis in canone biblico axiomatice collocatur.}
+Tamquam tertium axioma statuimus vestigia historica actionis divinae (Axioma II) suum specificum, historice attestatum referendi spatium in textuum corpore Veteris et Novi Testamenti invenire. Ut obiectum investigationis sine ambiguitate circumscribamus et exegesin a regressu infinito tueamur, universitatem huius spatii quaerendi per canonem protestanticum clausum 66 librorum definimus: Vetus Testamentum -- ut terminus technicus canon Hebraicus (\textit{Tanach}) cum suis tribus partibus \textit{Tora} (institutio), \textit{Nebi'im} (prophetae) et \textit{Ketubim} (scripta) in enumeratione evangelica 39 librorum -- atque Novum Testamentum in collectione 27 scriptorum ab ecclesia antiqua fixa \citep{beckwith1985,metzger1987}.
+
+\apthsec{7}{Plausibilisatio heuristica limitum canonis}{kanon-heuristik}
+Electio axiomatica canonis redolet condensationem historico-effectualem testimoniorum primariorum. Terminatio spatii quaerendi (§~\ref{sec:kanon}) est heuristica methodica: ad factum historicum accedit, quod communitates antiquae in his ipsis 66 scriptis condensationem traditionis efficientiarum transcendentiae agnoverunt. Processus selectionis ecclesiae antiquae (velut relatio ad testes oculatos, cohaerentia contentus et receptio lata) \apth non serviunt tamquam dogmata infallibilia, sed tamquam indicator historicus huius rei, quod hoc textuum corpus fontem primarium actionis divinae in realitate constituit. Electio huius ipsius canonis est positio pragmatica, non limes dogmaticus. Expresse non debet confundi cum Christianismo reformato aut cum alio quocumque confessionis symbolo: spatium quaerendi principialiter aliter etiam circumscribi potuisset. Sed omnis investigatio alicubi limite eget, ut omnino obiectum clare circumscriptum possideat. Pro singulari, 66 libros complectenti limite canonis protestantici duae rationes loquuntur: Primum, is historice conservativissimam, a maxima parte Christianitatis communem intersectionem designat; scripta deuterocanonica addita canonis catholici vel orthodoxi spatium quaerendi dilatant, quin illud historice necessarium reddant. Secundo, hic canon ex historia effectuum tamquam minimum spectari potest: in his ipsis textibus ecclesia antiqua condensationem traditionis actionis divinae agnovit atque retinuit.
+
+\apthsec{8}{Litterae extracanonicae}{ausserkanonisch} Hinc sequitur modus tractandi omnem reliquam litteraturam -- apocrypha, pseudepigrapha, scripta Qumranensia, traditionem rabbinicam et litteraturam ambientis Graeco-Romani: illa tamquam contextus historicus et materia comparationis eximie pretiosa sunt atque ab \apth ita adhibentur, sed extra spatium quaerendi axiomaticum iacent. Pro illis axiomata §§~\ref{sec:axiom-i}--\ref{sec:kanon} non valent tamquam thesis spatii efficientiae; contextus canonis sunt, non eius obiectum investigationis. Eorum veritatis postulatio hac re neque affirmatur neque negatur. Idem valet de posterioribus revelationis postulationibus, veluti de Alcorano: is iisdem instrumentis investigari posset. Propter praesuppositam fidem (ipsam \textit{fiduciam}) auctoris ille pro \apth tamen nullam vim habet tamquam fons vestigiorum efficientiae transcendentis. Decisiva est abductiva comparatio: ubi variae explicationes transcendentes inter se ponderandae sunt, investigator ideo non in conflictum ideologicum incidit, quia spatium quaerendi \apth expresse solum canonem complectitur. Intra hoc spatium quaerendi \apth deinde methodum historicam monotheismo adiunctam praebet -- non regulationem specialem, sed applicationem consequentem instrumentarii generalis.
+
+\apthsec{9}{Axioma IV: Natura textus et auctoritas humana}{textnatur}
+\textit{Scripturae biblicae exstant tamquam fontes antiqui, a realibus hominibus historicis conscripti.}
+Canon (§~\ref{sec:kanon}) \apth praebet se tamquam collectionem fontium antiquorum, qui a realibus hominibus historicis singulis in suis linguis, generibus et condicionibus conscripti sunt. Hac re \apth se definitione separat ab omni doctrina inspirationis sensu dictati: Biblia non est Alcoranus -- neque tamquam formula magica de caelo dictata neque tamquam verbum mechanice infusum intellegitur. Sobrie tenendum: quod primum novimus, hoc est, hos textus de rebus longe diversis testari -- de eventibus, interpretationibus, precibus, institutis et testimoniis -- etiam ibi, ubi eorum genus non est narratio historica. Quod autem ab initio non novimus, hoc est, has scripturas per se per sapientiam a Spiritu Sancto datam ortas esse; talis assumptio sine circulo vitioso poni non posset. Per se patet per posteriores cogitationes -- veluti per inferentiam ad optimam explicationem -- ad tales hypotheses perveniri posse; hae tum eventus investigationis sunt, non eius praesuppositio. Exsistentia principialis huius intentionis auctoris humanae studium textuum demum omnino possibile reddit.
+
+\section*{III. Structura methodologica \textit{Approbationis Testimonii Historicae}}
+
+\apthsec{10}{Theoria actuum loquendi et determinatio intentionis auctoris}{sprechakttheorie} \apth notionem \textit{illocutionis} ex theoria actuum loquendi philosophiae sermonis sumit: Ioannes L. Austin \citeyearpar{austin1962} distinxit actum \textit{locutorium} (aliquid cum sensu et referentia dicere), actum \textit{illocutorium} (quid agat quis eo, quod id dicit: affirmare, testari, praecipere) et actum \textit{perlocutorium} (effectum adeptum); systematice autem facta est haec theoria ab Ioanne R. Searle \citeyearpar{searle1969}, analysis subiacens intentionis loquentis ab H. Paulo Grice \citeyearpar{grice1957} proficiscitur. Praecisius dictum hoc pro \apth significat: forma et factum (§~\ref{sec:faktum-format}) sunt distinctio interna intra actum locutorium, scilicet inter gestum sensus sermonis et realitatem, ad quam refert; illocutio autem est dimensio propria, ab illa independens -- quaestio, quid auctor verbis suis erga destinatarios suos egerit. Perlocutio tamquam historia effectuum ab illocutione separatur. Hoc nullam terminologiam theologicam specialem fundat: reconstructio intentionis illocutoriae est processus receptus scientiae historicae, quem Quintinus Skinner \citeyearpar{skinner1969} in historiam idearum historicam introduxit. \apth notionem assumit tamquam partem repertorii historici generalis, atque abiectionem illis nimietatibus denuntiat, quae notionem philosophicam in methodum exegeticam exclusivam declaraverunt -- notissima interpretatio existentialis Rudolphi Bultmanni \citeyearpar{bultmann1941}, quae analyticam existentialem Heideggeri in clavem hermeneuticam privilegiatam elevavit, atque nova hermeneutica Ernesti Fuchs \citeyearpar{fuchs1959} et Gerardi Ebeling \citeyearpar{ebeling1967}, quae philosophiam sermonis Heideggeri tamquam ``eventum sermonis'' absolvit. Hoc fundamento posito, ad intentionem auctoris determinandam haec valent: distinctio inter formam sermonis antiquam et actionem sermonis intentam (illocutionem) non debet inversa in fallacem manum auxilii degenerare. Etiam imago mundi temporibus alligata aut ex hodierna aestimatione erronea ipsa potest esse obiectum actionis sermonis intentae. \apth ad historice probam intentionis auctoris determinationem obligat -- etiam ibi, ubi illocutio propositiones continet, quae hodiernae nostrae cognitioni aut imagini mundi contradicunt. Ubi auctor notionem antiquam non modo tamquam gestatorem propositionis suae adhibet, sed eam ipsam docere aut praesupponere vult, hoc ipsum est inventum, quod stare sinitur.
+
+\apthsec{11}{Inferentia ad optimam explicationem}{inferenz} Ut vestigia efficientiae transcendentis, quae in Axiomate II (§~\ref{sec:axiom-ii}) praesupponuntur, diiudicare possimus, quin in arbitrium interpretationis selectivae incidamus, \apth criterio methodico claro eget ad diiudicanda testimonia transcendentem aliquid intendentia. Hic criterium \textit{inferentiae ad optimam explicationem} \citep{harman1965,lipton2004,wright1992} adhibemus: interventio transcendens Dei intra fines Approbationis tum tamquam hypothesis historice optima ponderatur, cum effectum realem, comprehensibilem, historicum explicat, qui sine hoc eventu aenigmaticus, inconsequens aut historice improbabilis maneret. Non igitur solum quaerimus, quid textus affirmet, sed quaenam causa realis effectus observabiles in historia (veluti ortum communitatis primaevae, mutationes radicales morum testium aut structuram traditionis) cohaerentissime explicet. Hoc admissione actionis divinae non fit caecus saltus fidei, sed conclusio rationabiliter suscepta in fundamento virtutis explicativae historicae. \apth autem expresse nullum \textit{deum lacunarum} construit: actio divina non velut explicatio incommoda pro lacunis nostrae scientiae adhibetur. Decisivum non est nudus defectus explicationum imminentium, sed virtus explicativa positiva -- effectus realis, comprehensibilis, historicus, qui per causam transcendentem assumptam intellegibilis redditur. Ubi talis inventus positivus deest, \apth nullam hypothesim transcendentem erigit; saepe tum honestum ``nescimus'' -- \textit{non liquet} -- optima explicatio est. Inferentia super datis nititur, non super impotentia rationis \citep{bonhoeffer1951,coulson1955,plantinga2011}.
+
+\apthsec{12}{Applicatio plena methodorum}{methodenanwendung} Instrumentarium receptum investigationis historico-criticae sine ulla detractione adhibemus: criticam textus (restitutionem verborum originalium), criticam litterariam (separationem fontium et stratorum tractationis), historiam formarum (analysin generum minorum eorumque ``situs in vita''), historiam traditionis et redactionis (incrementum traditionis eiusque formam finalem per redactorem) atque semanticam historicam et comparationem historiae religionum \citep{steck1999,schnelle2008,soeding1998}. Idem valet de instrumentario, quod scientia classica antiquitatis ad tractandos textus antiquos excogitavit -- criticam fontium et constitutionem textus, epigraphicam, papyrologiam, numismaticam et contextualisationem historicam; scripturae biblicae textus antiqui sunt et hoc ipso instrumento tractantur \citep{schaps2011,bernheim1889}. Textus in sua quisque lingua antiqua, suo genere litterario et suo contextu historico analysatur. Hic autem premendum est: nulla opus est instrumentario speciali -- non exegesi psychologiae profundae Drewermanni \citeyearpar{drewermann1984}, quae tamquam exemplum contrarium monens stat, nulla ``exegesi spirituali'' artificiose inventa, qualem interpretatio scripturae anthroposophica Steineri \citeyearpar{steiner1910} et mystica numerorum Weinrebi \citeyearpar{weinreb1963} exhibent, nullisque regulis apologeticis specialibus. Methodi historicae receptae omnino sufficiunt ad textum in sua origine humana et realitate antiqua intellegendum. Instrumenta investigationis non mutare aut infirmare debemus, ut fidem tueamur, sed ea tantum a praeiudiciis ideologicis liberare debemus. Hic expresse tenendum: unica modificatio, quam \apth peragit, non ipsum repertorium methodicum respicit, sed solum spatium hypothesium.
+
+\apthsec{13}{Methodi historicae monotheismo adiunctae}{adjungierung} Postulationem reicimus, investigationem historicam sine Dei assumptione pure ``methodice agnosticam'' ideoque ideologice neutralem esse -- habitum, qui hodie praecipue ut inclusio clinica (\textit{bracketing}) occurrit \citep{meier1991}, quique historice ad postulatum methodologicum conexus causalis clausi Troeltschii \citeyearpar{troeltsch1913} redit. In realitate a Deo creata et informata, inclusio methodica actionis divinae functionaliter eadem est atque atheismus methodicus \citep{schlatter1905,pannenberg1961,maier1974,linnemann1999}. Expresse autem declaramus: \apth non postulat, artem historicam receptam ut talem reformare -- quamvis revisio epistemologica principialis omnino apta esset. Instrumentarium eius generale pro rebus immanentibus intactum manet et in sua ipsius competentia agnitum. Quod \apth peragit, angustius est et modestius: pro suo obiecto clare circumscripto -- canone biblico (§~\ref{sec:kanon}), in quo secundum Axioma II vestigia efficientiae transcendentis attestantur -- maculam caecam tollit. Praemissam monotheisticam methodo historicae exsistenti expresse adiungit, potius quam, sicut agnosticismus qui neutralis putatur, eam invisibiliter in criterium exclusionis vertat -- processus, qui obiectioni contra casum parallelum theoriae scientiae, naturalismum methodologicum, aequatur \citep{plantinga2011}. Hunc processum \textit{methodos historicas monotheismo adiunctas} appellamus. Agnosticismus genuinus, experientiae apertus, ab atheismo eo ipso differt, quod in abductione historica (§~\ref{sec:inferenz}) actionem divinam tamquam optimam explicationem ibi admittere paratus est, ubi exempla explicationis mere immanentis in indiciis historicis deficiunt \citep{keener2011,licona2010,wright2003}; haec apertura ad consensionem cum veritate tradita correspondet programmati hermeneutico Stuhlmacheri \citep{stuhlmacher1979,stuhlmacher1989} et realismo critico Wrightii \citep{wright1992}. Quia expresse fidem monotheisticam in Deum profitemur, \apth non postulat se methodum ideologice neutram esse. Est potius instrumentarium rationabiliter susceptum, quod fidem in Deum tamquam causam transcendentem realitatis praesupponit et analysin historicam hoc fundamento possibilem reddit. \apth instrumenta recepta scientiae historicae a praeiudicio atheistico liberat atque probitatem historicam in dialogo honesto cum testibus servat.
+
+\apthsec{14}{Hypothesis operaria: Logica messianica adimpletionis}{erfuellungslogik}
+\textit{Relatio interna inter canonem Hebraicum et testimonium Novi Testamenti inservit tamquam paradigma investigationis regulativum.}
+Hypothesis operaria duas directiones habet et in utraque tamquam propositio historica falsificabilis de ipsis textibus formata est -- non tamquam fides praesupposita:
+
+\subpar{(1) \textbf{Directio prorsum.} \textit{Tanach} ad adimpletionem apertus est. Eius promissiones -- promissio foederis, promissio regia, foedus novum, exodus novus -- excessum exspectationis generant, qui adimpletionem quaeque intra tempus positam superat atque in exspectatione Messiae seroprophetica et Iudaica primaeva expresse ad unctum venturum refert \citep{zimmerli1952,vonrad1960,mowinckel1956,collins2010}.}
+
+\subpar{(2) \textbf{Directio retrorsum.} Auctores Novi Testamenti hunc interpretationis compagem praesupponunt et pro Iesu et communitate primaeva postulationem erigunt, historiam et promissiones Israelis in eo ``secundum Scripturas'' eschatologice ad adimpletionem venire \citep{dodd1952,goppelt1939,hays1989,huebner1990,wright1992}. \textit{Tanach} ita non tantum res secundaria est, sed systema referendi generativum illocutionum Novi Testamenti. Haec praesuppositio non probam cuiusque loci singuli praemittit, sed auto-collocationem duorum textuum corporum examinabilem describit; ut hypothesis operaria continuo examinabilis manet et per inventa deducta modificabilis aut refutabilis est.}
+
+\section*{IV. Methodus scientifica et fides}
+
+\apthsec{15}{Pro intellectu}{kategorial} Methodus scientifica et intellegere intellectuale pars sunt creationis iam factae. Deus homini intellectum et logicam concessit, atque cognitio intellectualis intentionis textus finis primarius interpretationis biblicae est. Nos igitur decisive ab omnibus fluentis anti-intellectualisticis distamus, quae intellectum excludunt atque ita in scepticismum occultum incidunt -- periculum, quod Noll \citeyearpar{noll1994} et Moreland \citeyearpar{moreland1997} descripserunt quodque Ioannes Paulus II \citeyearpar{fidesetratio1998} tamquam fideismum nominavit et reiecit. Anticipando tenendum: etiam theologia matura intellectum non damnat, sed ei locum firmum assignat -- distinctio classica notitiae, assensus et fiduciae (\textit{notitia, assensus, fiducia}) a comprehensione rationali testimonii incipit \citep{calvin1559}. Plena evolutio fidei personalis tamquam \textit{fiduciae} hic obiectum non est. Simul sobrie valet: scepticus per rationalitatem vix aut omnino non convincitur; scepticismus est fovea profunda et contra argumenta omnino immunis \citep{wittgenstein1969}. Quoddam flumen anti-intellectuale in argumentis etiam confirmationem suae imaginis mundi videt -- contradictio convictionem corroborat, potius quam concutiat \citep{festinger1956,noll1994}. Ut ex hac torpore hermeneutico anti-intellectualismi exeatur, opus est exitibus philosophicis et passibus liberationis practicis. Epistemologice scepticismus absolutus se prodit tamquam contradictio pragmatica: qui affirmat nihil certo sciri posse, hanc ipsam postulationem ad gradum scientiae elevat. Praeterea dubium in vita cotidiana (\textit{sensus communis}) deficit, quia omnis actio fiduciam in perceptione et logica cogit. Ex cogitatione immunisata nullus coactus rhetoricus liberat, sed: primum interrogatio Socratica, quae propria criteria falsificationis detegit; secundo securitas emotionalis, quae disiunctionem opinionis et identitatis sine iactura honoris permittit; et tertio exemplum humilitatis epistemicae et nobilitatis hermeneuticae (§~\ref{sec:tugenden}), quod systemati imaginem inimici eripit.
+
+\apthsec{16}{Aestimatio accusationis scientismi}{wissenschaftsglaeubigkeit} Hoc loco obiectio sincere aestimanda est, quae praecipue a parte anti-intellectualistica venit: qui Bibliam methodis scientiae examinet, is scientiam modernam in lapidem angularem veritatis vertat. Manu in pectus posita: lectio Bibliae ``nuda'', praesuppositionis expers, sine ullis perspicillis, solum in phantasia sermonum dominicalium exsistit -- omnis interpretatio cum praeintellegentia laborat, et exegesis praesuppositionis expers impossibilis est \citep{bultmann1957,gadamer1960}. Sola interpretatio re vera perspicillorum expers est methodus ``sensus viscerum'' -- scilicet: verum est, quidquid in legendo suavem horrorem gignit\textinterrobang\space Qui in pluteo esoterico finire non vult, perspicilla eligere debet. Omnis interpretatio inevitabiliter cum praeintellegentia laborat. Quaestio igitur vera non est, num perspicilla gerat quis, sed quaenam. Quod \apth hic scientiam modernam eligit, rationem simplicem habet: ipsa est, quantum novimus, optimum, quod hoc tempore habemus. Electio instrumentarii historico-critici et analytici non ex fide naiva in spiritum aetatis scientiae modernae fit, sed ex necessitate methodica: id systema hactenus consistentissimum, intersubiective examinabile constituit ad fontes historicos quaerendos de eorum origine et intentione. Qui instrumentis scientificis renuntiat, examinabilitatem intersubiectivam inevitabiliter per subiectivitatem incontrolatam substituit. Alia perspicilla in huius manifesti compage ex suis quisque rationibus critica sunt et tamquam alternativa non amplius patent.
+
+\apthsec{17}{Exegesis et critica aetatis praesentis}{exegese-zeitkritik} Receptum methodicum exegeseos clare limitatum est. Exegesis (a Graeco ἐξήγησις, ``interpretatio, expositio'') est interpretatio textus methodice controlata, historico-critica; eius finis est reconstructio actionis sermonis propositi destinati (illocutionis) auctoris antiqui in eius contextu historico \citep{stuhlmacher1989}. Cum reconstructione huius illocutionis munus eius impletum est. Omnia ulteriora secundum \citet{hirsch1967} non amplius sensum textus (\textit{meaning}) respiciunt, sed eius significantiam (\textit{significance}) pro contextibus posterioribus. Quod deinde sequitur, igitur non amplius exegesis est, sed aliquid aliud:
+
+\subpar{(1) \textbf{Delimitatio ab historia effectuum.} Historia effectuum est obiectum investigationis proprium, legitimum (separatio perlocutionis et historiae effectuum in §~\ref{sec:sprechakttheorie} fundata est): \citet{gadamer1960} ostendit nullum intellegere extra historiam effectuum textus stare, atque \citet{luz1985} eam tamquam perspectivam exegeticam sui iuris elaboravit. Ea autem quaestionem non respondet, quid auctor antiquus textu suo egerit. Ad reconstructionem huius illocutionis historia effectuum igitur eatenus tantum adhibetur, quatenus conspectum in textum antiquum acuit -- tamquam indicator heuristicus, non tamquam obiectum iudicii.}
+
+\subpar{(2) \textbf{Delimitatio a critica motuum.} Aestimatio motuum alienorum aut communitatum hodiernarum munus theologiae systematicae et doctrinae confessionum est, non iudicium exegeticum. Qui locum textus in telum contra alios vertit, ipse illocutionem textus relinquit atque in errorem occultum incidit, quem alibi impugnat: non amplius legit, quid testis antiquus agere voluerit, sed quid sua ipsius polemica praesentis temporis requirit.}
+
+\apthsec{18}{Delimitatio exegeseos}{abgrenzung-exegese}
+Ita stricte separamus inter id, quod textus dicit et vult, et id, quod lectores posteriores ex eo faciunt \citep{hirsch1967}. Solum ita exegesis historice proba manet et ab abusu textus tamquam medio contentionis ideologicae tuta est. Simul opus cum exegesi non finitur: exegesis elaborata tamquam punctus referendi idonea est, ex quo ordinationes historico-effectuales aut critica motuum concreta suscipi possunt. Theologice dictum haec est distinctio classica inter exegesin -- reconstructionem historicam actionis sermonis -- et hermeneuticam sensu latiore, quae etiam applicationem textus ad praesens complectitur; vocabulum ``hermeneutica'' multas autem significationes fert \citep{ebeling1959}. Distinctio ad antiquiorem hermeneuticam protestanticam redit, quae praeter intellegere (\textit{subtilitas intelligendi}) et explicare (\textit{subtilitas explicandi}) proprie applicare (\textit{subtilitas applicandi}) distinxit \citep{rambach1723}; \citet{gadamer1960} hoc momentum applicationis tamquam partem intellegendi ipsius relinqui non posse denuo invenit. Hi passus ulteriores ab ipsa \apth autem non tractantur.
+
+\apthsec{19}{Refutatio accusationis dissolutionis}{verwaesserung} Ex angulo conservativo aut fundamentalistico hoc loco fortasse obiectio erigitur, qui his methodis utatur, is inevitabiliter in theologiam liberalem delabi atque fidem dissolvere. Haec obiectio autem in errore cogitandi nititur, quia instrumentum analyticum cum axiomate atheistico exegeseos liberalis confundit \citep{schlatter1905,troeltsch1913}. Qui methodum historicam adhibet, demolitionem fidei non agit \citep{stuhlmacher1979,wright1992,enns2005,sparks2008}. Delapsus in theologiam liberalem non per analysin sermonis aut fontium fit, sed tum demum, cum postulatum assumitur, Deum in historiam intercedere non posse \citep{harvey1966,lessing1777}. Quia nostrum cogitandi exemplum hoc postulatum atheisticum per catenam axiomatum praepositam expresse excludit, substantia fidei revelationis omnino intacta manet. Investigatio textus fundata ita non fit inimica fidei, sed sponsor probitatis historicae, quae aeque contra naivitatem ac contra saecularismum tuetur.
+
+\apthsec{20}{Contra relativizationem selectivam}{selektive-relativierung} Similiter haec habitudo contra extremum nimiae re-interpretationis symbolicae tuetur: veluti contra affirmationem, Deum quidem exsistere et agere, crucem autem merum symbolum intemporale amoris esse, resurrectionem vero imaginem tantum permanendae ideae. Magni momenti est distinctio a praecedenti: haec relativizatio non ex axiomate atheistico fit, sed apud homines, qui certe in Deum credunt -- qui tantum res quasdam non credunt. Talis retentio selectiva rerum iucundarum cum simul mitigatione symbolica rerum offendentium non est lectio proba, sed cogitatio votiva: testam fidei servat et eius contentum evacuat -- re ipsa alia religio \citep{machen1923}. Methodi historicae sine ambiguitate ostendunt testes Novi Testamenti nulla symbola intemporalia tradere voluisse, sed affirmare eventus reales, incisivos in spatio et tempore factos esse \citep{wright2003}. Qui horum testimoniorum singulum credere non vult, id honeste reicere debet; ea autem in metaphoras mitigare, dum in ceteris credit, neque historice neque existentialiter probum est \citep{lewis1967,bultmann1941}. Species affinis eiusdem erroris in miraculis ``nucleum realem'' in processu naturaliter explicabili quaerit -- veluti Iesum super lacum incedentem tamquam per vadum syrtis aut cibationem quinque milium tamquam cibos divisos -- et ita eventum in testa retinet, dum miraculum ut miraculum dissolvit \citep{paulus1828}.
+
+\apthsec{21}{Nulla conciliatio profunda}{tiefen-harmonisierung} \apth expresse non postulat, ex contradictionibus, erroribus aut inconcinnitatibus textus cognoscibilibus ad principium altius concludi, quod nihilominus veritati absolutae respondeat. Hunc ipsum brevem circuitum hodie nonnulli motus peragunt: ubi textus tensiones aut errores ostendit, ibi substratum absconditum supponunt, quod erroris expers et absolute verum sit -- exemplariter doctrina de \textit{sensu pleniori} \citep{brown1955} et conciliatio apologetica contradictionum putativarum \citep{archer1982}. Talis assumptio erga auctorem humanum criminatio est -- scire non possumus nec affirmamus auctorem antiquum verbis suis ad tale principium intendisse. Etiam ubi textus actionem divinam attestatur, nulla obligatio sequitur: fieri potest, ut post testimonium veritas divina stet, sed officium, in omni casu principium altius contradictiones dissolvens assumendi, non exsistit; investigatio historico-critica potius varietatem et tensiones canonis tamquam datas exposuit et conciliationem artificialem reiecit \citep{kaesemann1951,dunn1977,enns2005}. \apth nullam conciliationem profundam cogit; textum tam serio accipit, quam ipse est.
+
+\apthsec{22}{Contra obiectionem collapsus}{kollaps} Fautores absolutae \textit{inerrantiae} hoc loco saepe argumentum specie cogens opponunt: \textit{Si contradictiones in textu concedimus, quomodo adhuc cruci credere possumus?} Qui unum errorem concedit, ita obiectio currit, totam Scripturam deseruit; vacuitas contradictionis est columna, qua fides nititur. Haec obiectio in duplici errore cogitandi nititur, quem \apth praecise nominare potest.
+
+\subpar{(1) \textbf{Confusio facti et formae.} Obiectio Scripturam tractat tamquam systema homogeneum, propositionale, in quo omnis propositio par pondus systema criticum fert. Conflictus in chronologia aut cosmologia antiqua (forma) ita immediate centrum kerygmaticum (factum) concutere deberet. Hoc est error categorialis. Resuscitatio Christi ex mortuis est eventus in spatio et tempore; quaestio, quot annos siccitas sub Elia duraverit, est nota formae traditionis antiquae. Veritas unius a perfectione alterius non pendet \citep{wright2005}.}
+
+\subpar{(2) \textbf{Radix falsa.} Fides in crucem et resurrectionem non super catena deductiva nititur (``quia omnis sententia Bibliae vera est, ideo etiam crux vera est''), sed super inferentia ad optimam explicationem (cf. §~\ref{sec:inferenz}). Resurrectio mutationem radicalem morum testium, ortum communitatis primaevae et paritatem ad martyrium cohaerentius explicat quam quaevis alternativa mere immanens. Haec virtus explicativa a perspectivis singulorum discrepantibus evangelistarum aut a mutationibus traditionis in quaestionibus marginalibus non tangitur. Immo contra: parvae inconcinnitates, perspectivae diversae et proprietates redactoriales credibilitatem minime minuunt -- in scientia historica tales refractiones humanae pro forti indicio contra collusionem aut falsificationes posteriores valent; ipsi errores et nuancae testium humanorum eorum relationes historice credibiliores reddunt. Qui super vacuitatem contradictionis tamquam fundamento aedificat, fidem super fragilissima omnium columnarum aedificavit \citep{bauckham2006}.}
+
+\subpar{(3) \textbf{Analogia incarnationis et ordo historicus.} Obiectio praeterea neglegit Scripturam secundum analogiam incarnationis notas omnino humanas ferre: sicut Christus totus homo et totus Deus est, ita Scriptura est verbum omnino humanum, culturae et tempori alligatum -- et eo ipso testimonium actionis divinae \citep{enns2005}. Ordo historicus hoc confirmat: communitas primaeva in crucem et resurrectionem credidit, multo antequam ullus textus Novi Testamenti exsisteret. Fides in eventum textum praecessit, non vice versa. Qui fidem a textu erroris experte dependentem reddit, hunc ordinem invertit \citep{sparks2008}.}
+
+\section*{V. Applicatio}
+
+\apthsec{23}{Necessitas virtutum animi}{tugenden} Quia omnis methodus historica et hermeneutica in homines incidit, qui sub condicionibus imperfectionis et imprecisionis decisiones capere debent, \apth praeter instrumenta scientifica has virtutes animi requirit \citep{zagzebski1996}:
+
+\subpar{(1) \textbf{Probitas intellectualis (\textit{Honestas Epistemica}):} paratas incorruptibilis inventum ita stare sinendi, sicut se praebet -- etiam si proprias praedilectiones, fines apologeticos aut consuetas pietatis formas laedit aut in dubium vocat \citep{williams2002}.}
+
+\subpar{(2) \textbf{Humilitas epistemica (\textit{Humilitas Scientiae}):} confessio conscia propriae perspectivitatis et fallibilitatis. Cognitio, proprium intellegere semper tantum ``optimum esse, quod hoc tempore novimus'', contra postulationem absolutam dogmaticam tuetur et melioribus rationibus apertum servat \citep{popper1963}.}
+
+\subpar{(3) \textbf{Nobilitas hermeneutica (\textit{Nobilitas Mentis}):} habitudo fundamentalis magnanima, praeiudicii expers (cf. εὐγενέστεροι in Act 17,11). Textui eiusque testibus neque cum descensione cynica neque cum oboedientia caeca, cadaverosa occurritur, sed cum respectu sincero ex aequo \citep{davidson1974,jacobs2001}.}
+
+\subpar{(4) \textbf{Tolerantia ambiguitatis (\textit{Tolerantia Ambiguitatis}):} facultas aperta quaestiones, lacunas scientiae et tensiones residuas non solutas in textu sustinendi, quin eas praemature per conciliationes artificiales aut per abbreviationes pragmaticas violenter dissolvat \citep{frenkelbrunswik1949}.}
+
+\apthsec{24}{Heuristica historica: Compatibilitas symbolica inventorum}{heuristik-befund} Investigatio obiecto suo congrua cum magna probabilitate ad inventa ducit, quae cum symbolis ecclesiae antiquae congruunt. In fundamento inferentiae ad optimam explicationem exspectationem fundatam (heuristicam) formamus, investigationem historicam probam illocutionum biblicarum in earum propositionibus centralibus non ad demolitionem fidei revelationis ducere. Magna cum probabilitate exspectandum est, reconstructionem historicam resultatui apertam inventa producere, quae in contentibus essentialibus symbolorum fidei ecclesiae antiquae (Symboli Apostolici et Nicaeno-Constantinopolitani) depicta sunt. Haec congruentia non dogmatice cogitur, sed consequitur tamquam consequentia rationabiliter exspectabilis laboris ad textum historice probi. Haec heuristica expresse tantum prospectus est et non tamquam circulus vitiosus intellegenda est, qui eventum methodi praeoccupat: methodus ipsa omni tempore resultatui aperta manet, atque haec exspectatio nihil probat. Est potius consideratio honesta, num haec methodus resultatui aperta formata -- contra fidem eorum, qui eam exsequuntur -- non tamen in haeresin aut in apostasiam ducat. Auctor certe usque in hodiernum diem a fide non defecit et numquam cum intentionibus apologeticis ad textus accessit. Ex invento probe intellecto et ex fide existentiali (cf. §~\ref{sec:kategorial}) denique disciplinae applicatae, velut ethica et ecclesiologia, crescunt.
+
+\apthsec{25}{Exspectatio de infallibilitate}{infallibilitaet} Sicut inventum in §~\ref{sec:heuristik-befund}, etiam haec sententia tamquam exspectatio fundata currit, non tamquam dogma. \apth hic consilio de termino technico \textit{infallibilitatis} loquitur atque eam pragmatice reddit tamquam \textit{immunitatem ab errore in quaestionibus centralibus fidei et vitae}; diffusa autem redditio, quae absolutam erroris vacuitatem in omni singulari verbo (id est \textit{inerrantiam}) postulat, decipiens est. Exspectatio super inductione nititur: propter evolutionem historicam et selectionem canonis textus, qui quaestionibus centralibus fidei grosse contradixerunt, in cursu processuum eliminationis ecclesiae antiquae iuste non sunt in canonem recepti. Inde inductive concludi potest, formam originalem, minimalem \textit{infallibilitatis} -- fidelitatem canonis in eius propositionibus nucleariis -- a fautoribus Approbationis probabiliter assumi posse, ut intra regionem theologicam clare se locent. Ipsa autem expresse nullum dogma manet et valde a definitione electa pendet: utrum quis \textit{infallibilitatem} maxime (ne unus quidem error ullibi, ubi Biblia adeptionem salutis, fidem et vitam Christianam attingit) an minime (nullus error in re decisiva) accipiat, postulationem fundamentaliter mutat. Retinentiam debitam esse imprimis inventa investigationis historico-criticae ostendunt: ubi eius fautores quaestiones ethicas aliasque scripturarum canonicarum perlustrant, tensiones et contradictiones internae celerrimae in lucem prodeunt \citep{dunn1977,kaesemann1951,ehrman2009}. Talia inventa fautores Approbationis -- methodice consequenter -- probabiliter etiam invenirent atque secundum §~\ref{sec:tiefen-harmonisierung} stare sinerent, quin ea conciliarent. Eo ipso \textit{infallibilitas} pro \apth exspectatio manet et non axioma.
+
+\section*{Conclusio}
+\begin{quote}
+Manifestum hoc fructus est profundae quaestionis cohaerentiae intellectualis et certitudinis interioris. Hominibus, qui in categoriis cogitandi logicae modernae, epistemologiae et theoriae scientiae eruditi sunt, desiderium fundamenti fidei portantis munus existentiale fit. Quaestio verae probitatis historicae et logicae se tum ostendit esse solum firmum, super quo fides ratione responsabilis in summa claritate stare potest.
+
+Hac ipsa de causa hic accessus nomen \textit{Approbationis Testimonii Historicae} fert -- agnitionem testimonii historici. Vocabulum intentionem in compendium redigit: iungit examinationem et confirmationem incorruptibilem (\textit{approbationem}) cum profundo respectu erga propositionem concretam testium oculatorum antiquorum (\textit{testimonium}), qui suam experientiam in spatio et tempore reliquerunt. Agnitionem esse, actionem Dei vestigia in historia reali relinquere atque instrumenta rationis inservire, ut haec testimonia in eorum intentione sermonis antiqua intellegantur. \textit{Approbatio Testimonii Historica} instrumentarium scientiae historicae tamquam donum creationis intellegit. Intellectu utitur, ut virtutem explicativam historicam testimoniorum biblicorum exponat atque credentem in occursum sincerum, timoris expertem cum fontibus ducat.
+
+Cognitio processus continuus manet, neque omnes quaestiones responsae sunt neque omnes tensiones solutae. Hic accessus se non intellegit tamquam confessionem militantem aut dogma infallibile, quod alios damnat, sed tamquam spatium pacificum, pacem faciens invitationis ad communem veritatis inquisitionem. Ubi scientificitas, apertura et certitudo fidei manu in manu procedunt, veritas suum plenum fulgorem explicat. Quare:
+\end{quote}
+
+\begin{center}
+{\large\itshape Fides non timet veritatem.}\\[0.3em]
+{\small (Der Glaube fürchtet die Wahrheit nicht)}
+\end{center}
+
+\vspace{0.2cm}
+\begin{flushright}
+{\scshape Kaiserslautern, \today}
+\end{flushright}
+
+\vspace{1.1cm} % Spatium pro subscriptione manu scripta
+
+\noindent
+\begin{minipage}[t]{0.45\textwidth}
+  \hrulefill \\[0.4em]
+  \textbf{Auctor / Initiator}\\[0.2em]
+  {\small Jason A. Schurawel}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+  \hrulefill \\[0.4em]
+  \textbf{Primus subsignator}\\[0.2em]
+  {\small ---}
+\end{minipage}
+
+\newpage
+\section*{Index vocum novarum}
+
+\begin{itemize}[leftmargin=0em, label={}, itemsep=2pt, parsep=0pt]
+  \item \textit{inerrantia} -- absolute freedom from error (Eng. \textit{inerrancy}); from \textit{in-} + \textit{errare}.
+  \item \textit{infallibilitas} -- unerring reliability in the central questions of faith and life.
+  \item \textit{hermeneutica} -- the art of interpretation (Gr. ἑρμηνεύειν).
+  \item \textit{epistemologia} -- epistemology, the theory of knowledge (Gr. ἐπιστήμη).
+  \item \textit{ontologicus} -- pertaining to being (Gr. ὄν, ὄντος).
+  \item \textit{semioticus} -- pertaining to signs (Gr. σημεῖον).
+  \item \textit{heuristica} -- heuristics, the art of discovery (Gr. εὑρίσκειν).
+  \item \textit{abductio} -- abduction, inference to the best explanation.
+  \item \textit{inferentia} -- inference, conclusion (from \textit{inferre}).
+  \item \textit{illocutio} -- illocution, the act performed in speaking (from \textit{loqui}).
+  \item \textit{perlocutio} -- perlocution, the effect produced by speaking (from \textit{loqui}).
+  \item \textit{monotheismus} -- monotheism, belief in the one God (Gr. μόνος + θεός).
+  \item \textit{fideismus} -- fideism, retreat into pure faith.
+  \item \textit{scepticismus} -- scepticism, the doctrine of doubt (Gr. σκέπτεσθαι).
+  \item \textit{kerygma} -- kerygma, proclamation (Gr. κήρυγμα).
+  \item \textit{trilemma} -- trilemma, a threefold dilemma.
+  \item \textit{scientismus} -- scientism, faith in science.
+  \item \textit{deus lacunarum} -- the ``God of the gaps.''
+  \item \textit{historia effectuum} -- the history of effects, reception history.
+  \item \textit{conciliatio profunda} -- deep harmonization.
+  \item \textit{relativizatio} -- relativization (from \textit{relativus}).
+  \item \textit{methodi historicae monotheismo adiunctae} -- monotheistically augmented historical methods.
+  \item \textit{plausibilisatio} -- the making plausible.
+  \item \textit{inclusio clinica} -- clinical bracketing.
+\end{itemize}
+
+\newpage
+\bibliographystyle{apalike}
+\bibliography{references}
 
 \end{document}
